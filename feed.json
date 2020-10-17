@@ -7,6 +7,14 @@
     "home_page_url": "http://example.com",
     "items": [
         {
+            "id": "http://example.com/2020/10/17/latex-test/",
+            "url": "http://example.com/2020/10/17/latex-test/",
+            "title": "latex_test",
+            "date_published": "2020-10-17T14:25:00.000Z",
+            "content_html": "<script type=\"math/tex; mode=display\">\n\\sum_{n=1}u_n</script>",
+            "tags": []
+        },
+        {
             "id": "http://example.com/2020/10/17/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/",
             "url": "http://example.com/2020/10/17/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/",
             "title": "无穷级数",

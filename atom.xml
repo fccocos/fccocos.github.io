@@ -8,9 +8,17 @@
     <author>
       <name>方聡</name>
     </author>
-    <updated>2020-10-17T03:32:00.000Z</updated>
+    <updated>2020-10-17T14:25:00.000Z</updated>
     <category term="daily" />
     <category term="work" />
+    <entry>
+        <id>http://example.com/2020/10/17/latex-test/</id>
+        <title>latex_test</title>
+        <link rel="alternate" href="http://example.com/2020/10/17/latex-test/"/>
+        <content type="html">&lt;script type=&#34;math/tex; mode=display&#34;&gt;
+\sum_{n=1}u_n&lt;/script&gt;</content>
+        <updated>2020-10-17T14:25:00.000Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2020/10/17/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/</id>
         <title>无穷级数</title>

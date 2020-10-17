@@ -10,10 +10,18 @@
         </author>
         <description>Record daily and work</description>
         <language>zh-CN</language>
-        <pubDate>Sat, 17 Oct 2020 11:32:00 +0800</pubDate>
-        <lastBuildDate>Sat, 17 Oct 2020 11:32:00 +0800</lastBuildDate>
+        <pubDate>Sat, 17 Oct 2020 22:25:00 +0800</pubDate>
+        <lastBuildDate>Sat, 17 Oct 2020 22:25:00 +0800</lastBuildDate>
         <category term="daily" />
         <category term="work" />
+        <item>
+            <guid isPermalink="true">http://example.com/2020/10/17/latex-test/</guid>
+            <title>latex_test</title>
+            <link>http://example.com/2020/10/17/latex-test/</link>
+            <pubDate>Sat, 17 Oct 2020 22:25:00 +0800</pubDate>
+            <description><![CDATA[ &lt;script type=&#34;math/tex; mode=display&#34;&gt;
+\sum_{n=1}u_n&lt;/script&gt; ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2020/10/17/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/</guid>
             <title>无穷级数</title>
