@@ -10,8 +10,8 @@
         </author>
         <description>Record daily and work</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 20 Oct 2020 22:29:53 +0800</pubDate>
-        <lastBuildDate>Tue, 20 Oct 2020 22:29:53 +0800</lastBuildDate>
+        <pubDate>Tue, 20 Oct 2020 22:40:33 +0800</pubDate>
+        <lastBuildDate>Tue, 20 Oct 2020 22:40:33 +0800</lastBuildDate>
         <category term="daily" />
         <category term="work" />
         <item>
@@ -22,7 +22,7 @@
             <category term="数学" scheme="http://example.com/categories/%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/" />
             <category term="线性代数" scheme="http://example.com/categories/%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/note/" />
             <category term="-数学 -考研 -线性代数" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6-%E8%80%83%E7%A0%94-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" />
-            <pubDate>Tue, 20 Oct 2020 22:29:53 +0800</pubDate>
+            <pubDate>Tue, 20 Oct 2020 22:40:33 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;1-矩阵的概念及运算&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-矩阵的概念及运算&#34;&gt;#&lt;/a&gt; 1  矩阵的概念及运算&lt;/h1&gt;
 &lt;h2 id=&#34;一-矩阵的概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-矩阵的概念&#34;&gt;#&lt;/a&gt; 一、 矩阵的概念&lt;/h2&gt;
 &lt;h2 id=&#34;二-矩阵的运算&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-矩阵的运算&#34;&gt;#&lt;/a&gt; 二、 矩阵的运算&lt;/h2&gt;
