@@ -10,10 +10,244 @@
         </author>
         <description>Record daily and work</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 20 Oct 2020 22:40:33 +0800</pubDate>
-        <lastBuildDate>Tue, 20 Oct 2020 22:40:33 +0800</lastBuildDate>
+        <pubDate>Mon, 26 Oct 2020 21:46:39 +0800</pubDate>
+        <lastBuildDate>Mon, 26 Oct 2020 21:46:39 +0800</lastBuildDate>
         <category term="daily" />
         <category term="work" />
+        <item>
+            <guid isPermalink="true">http://example.com/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/</guid>
+            <title>GLFW窗口的搭建</title>
+            <link>http://example.com/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/</link>
+            <pubDate>Mon, 26 Oct 2020 21:46:39 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;配置GLFW窗口的步骤&#34;&gt;&lt;a href=&#34;#配置GLFW窗口的步骤&#34; class=&#34;headerlink&#34; title=&#34;配置GLFW窗口的步骤&#34;&gt;&lt;/a&gt;配置GLFW窗口的步骤&lt;/h1&gt;&lt;h2 id=&#34;配置环境&#34;&gt;&lt;a href=&#34;#配置环境&#34; class=&#34;headerlink&#34; title=&#34;配置环境&#34;&gt;&lt;/a&gt;配置环境&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;新建一个c++空项目&lt;/li&gt;
+&lt;li&gt;选择菜单栏中的“项目”—&amp;gt;”项目属性”&lt;/li&gt;
+&lt;li&gt;单击“VC++目录”—&amp;gt;找到”包含目录”和”库目录”，在里面添加include和lib&lt;/li&gt;
+&lt;li&gt;选择”连接器”—&amp;gt;”输入”—&amp;gt;”附加依赖项”中添加opengl32.lb和glfw3.lib&lt;/li&gt;
+&lt;li&gt;在头文件目录中新建一个glad.c文件，然后将glad中的glad.c中的代码复制粘贴即可。&lt;/li&gt;
+&lt;li&gt;到此一个项目的环境配置完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/BKkgTe&#34;&gt;&lt;img data-src=&#34;https://s1.ax1x.com/2020/10/26/BKkgTe.png&#34; alt=&#34;BKkgTe.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/BKAAh9&#34;&gt;&lt;img data-src=&#34;https://s1.ax1x.com/2020/10/26/BKAAh9.png&#34; alt=&#34;BKAAh9.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/BKAcj0&#34;&gt;&lt;img data-src=&#34;https://s1.ax1x.com/2020/10/26/BKAcj0.png&#34; alt=&#34;BKAcj0.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/BKAoC9&#34;&gt;&lt;img data-src=&#34;https://s1.ax1x.com/2020/10/26/BKAoC9.png&#34; alt=&#34;BKAoC9.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;运行效果图：&lt;a href=&#34;https://imgchr.com/i/BKEu2n&#34;&gt;&lt;img data-src=&#34;https://s1.ax1x.com/2020/10/26/BKEu2n.png&#34; alt=&#34;BKEu2n.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;搭建GLFW窗口（OpenGL的运行框架）&#34;&gt;&lt;a href=&#34;#搭建GLFW窗口（OpenGL的运行框架）&#34; class=&#34;headerlink&#34; title=&#34;搭建GLFW窗口（OpenGL的运行框架）&#34;&gt;&lt;/a&gt;搭建GLFW窗口（OpenGL的运行框架）&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;添加头文件&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;#include &amp;lt;glad/glad.h&amp;gt;
+#include &amp;lt;GLFW/glfw3.h&amp;gt;
+//需要注意的是上述两行顺序不能颠倒，否则会报错
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;实例化GLFW窗口&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;要做的事情有如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化GLFW窗口&lt;/li&gt;
+&lt;li&gt;告知GLFW我们所使用OpenGL的版本号&lt;/li&gt;
+&lt;li&gt;明确OpenGL的渲染模式&lt;/li&gt;
+&lt;li&gt;创建GLFW窗口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;int main()
+&amp;#123;
+    glfwInit();//初始化GLFW
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);//OpenGL的主版本号为3
+    glwWindowHint(GLFW_CONTEX_VERSION_MINOR,3);//OpenGL次版本号为3
+    glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);//OpenGL的渲染模式为内核模式
+#ifdef __APPLE__       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
+#endif //用于macOS-X系统   
+
+//创建一个窗口，并将窗口句柄赋值给window
+//一个GLFWwindow的引用类型
+GLFWwindow* window=glfwCreateWindow(800,600,&amp;quot;LearnOpenGL&amp;quot;,NULL);
+//窗口创建失败
+if(window==NULL)
+&amp;#123;
+    std::cout&amp;lt;&amp;lt;&amp;quot;窗口创建失败&amp;quot;&amp;lt;&amp;lt;std::endl;
+    glfwTerminate();//销毁
+    return -1;
+&amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;用glad来管理OpenGL(glad是用来管理OpenGL的函数指针,因此在调用任何的OpenGL函数之前，都需要对glad进行初始化)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;初始化代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+&amp;#123;
+    std::cout&amp;lt;&amp;lt;&amp;quot;Failed to initalize GLAD&amp;quot;&amp;lt;&amp;lt;std::endl;
+    return -1;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;视口(OpenGL渲染窗口的尺寸大小，viewport)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;glViewport(0,0,800,600)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们实际上也可以将视口的维度设置为比GLFW的维度小，这样子之后所有的OpenGL渲染将会在一个更小的窗口中显示，这样子的话我们也可以将一些其它元素显示在OpenGL视口之外。然而，当用户改变窗口的大小的时候，视口也应该被调整。我们可以对窗口注册一个回调函数(Callback Function)，它会在每次窗口大小被调整的时候被调用。这个回调函数的原型如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个帧缓冲大小函数需要一个GLFWwindow作为它的第一个参数，以及两个整数表示窗口的新维度。每当窗口改变大小，GLFW会调用这个函数并填充相应的参数供你处理。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+&amp;#123;
+    glViewport(0, 0, width, height);
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们还需要注册这个函数，告诉GLFW我们希望每当窗口调整大小的时候调用这个函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当窗口被第一次显示的时候framebuffer_size_callback也会被调用。对于视网膜(Retina)显示屏，width和height都会明显比原输入值更高一点。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;渲染循环&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;while(!glfwWindowShouldClose(window))
+&amp;#123;
+    glfwSwapBuffers(window);
+    glfwPollEvents();    
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;glfwWindowShouldClose函数在我们每次循环的开始前检查一次GLFW是否被要求退出，如果是的话该函数返回&lt;code&gt;true&lt;/code&gt;然后渲染循环便结束了，之后为我们就可以关闭应用程序了。&lt;/li&gt;
+&lt;li&gt;glfwPollEvents函数检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）。&lt;/li&gt;
+&lt;li&gt;glfwSwapBuffers函数会交换颜色缓冲（它是一个储存着GLFW窗口每一个像素颜色值的大缓冲），它在这一迭代中被用来绘制，并且将会作为输出显示在屏幕上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;双缓冲(Double Buffer)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;应用程序使用单缓冲绘图时可能会存在图像闪烁的问题。 这是因为生成的图像不是一下子被绘制出来的，而是按照从左到右，由上而下逐像素地绘制而成的。最终图像不是在瞬间显示给用户，而是通过一步一步生成的，这会导致渲染的结果很不真实。为了规避这些问题，我们应用双缓冲渲染窗口应用程序。&lt;strong&gt;前缓冲&lt;/strong&gt;保存着最终输出的图像，它会在屏幕上显示；而所有的的渲染指令都会在&lt;strong&gt;后缓冲&lt;/strong&gt;上绘制。当所有的渲染指令执行完毕后，我们&lt;strong&gt;交换&lt;/strong&gt;(Swap)前缓冲和后缓冲，这样图像就立即呈显出来，之前提到的不真实感就消除了。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;写一个输入进程用于处理一些输入控制，代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;void processInput(GLFWwindow *window)
+&amp;#123;
+    if(glfwGetKey(window,GLFW_KEY_ESCAPE)==GLFW_PRESS);//glfwGet函数用于得到一个按键输入事件
+    glfwSetWindowShouldClose(window,true);//将GLFW的WindowShouldClose设置为true,关闭GLFW窗口
+
+
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们接下来在渲染循环的每一个迭代中调用processInput：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while (!glfwWindowShouldClose(window))
+&amp;#123;
+    processInput(window);
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这就给我们一个非常简单的方式来检测特定的键是否被按下，并在每一帧做出处理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;渲染&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们要把所有的渲染(Rendering)操作放到渲染循环中，因为我们想让这些渲染指令在每次渲染循环迭代的时候都能被执行。代码将会是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 渲染循环
+while(!glfwWindowShouldClose(window))
+&amp;#123;
+    // 输入
+    processInput(window);
+
+    // 渲染指令
+    ...
+
+    // 检查并调用事件，交换缓冲
+    glfwPollEvents();
+    glfwSwapBuffers(window);
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了测试一切都正常工作，我们使用一个自定义的颜色清空屏幕。在每个新的渲染迭代开始的时候我们总是希望清屏，否则我们仍能看见上一次迭代的渲染结果（这可能是你想要的效果，但通常这不是）。我们可以通过调用glClear函数来清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT。由于现在我们只关心颜色值，所以我们只清空颜色缓冲。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注意，除了glClear之外，我们还调用了glClearColor来设置清空屏幕所用的颜色。当调用glClear函数，清除颜色缓冲之后，整个颜色缓冲都会被填充为glClearColor里所设置的颜色。在这里，我们将屏幕设置为了类似黑板的深蓝绿色。&lt;/p&gt;
+&lt;p&gt;你应该能够回忆起来我们在 &lt;em&gt;OpenGL&lt;/em&gt; 这节教程的内容，glClearColor函数是一个&lt;strong&gt;状态设置&lt;/strong&gt;函数，而glClear函数则是一个&lt;strong&gt;状态使用&lt;/strong&gt;的函数，它使用了当前的状态来获取应该清除为的颜色。&lt;/p&gt;
+&lt;p&gt;完整代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;lang-c++&#34;&gt;/**/
+#include&amp;lt;iostream&amp;gt;
+#include &amp;lt;glad/glad.h&amp;gt;
+#include &amp;lt;GLFW/glfw3.h&amp;gt;
+using namespace std;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow* window);
+
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
+int main()
+&amp;#123;
+
+    /*初始化GLFW的窗口*/
+    glfwInit();
+
+    /*确定OpenGL主版本号*/
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+
+    /*确定OpenGL次版本号*/
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+    /*确定OpenGL的渲染模式为内核模式*/
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    /*如果使用的是macOS-X系统，还需附加如下代码*/
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+    GLFWwindow* window= glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, &amp;quot;LearnOpenGL&amp;quot;, NULL, NULL);
+    if (window == NULL)
+    &amp;#123;
+        cout &amp;lt;&amp;lt; &amp;quot;Failed to create GLFW window&amp;quot; &amp;lt;&amp;lt; endl;
+        glfwTerminate();//终结glfw窗口
+        return -1;
+    &amp;#125;
+
+    //将当前窗口的上下文设置为当前线程的主上下文
+    glfwMakeContextCurrent(window);
+
+    //注册一个回调函数
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    &amp;#123;
+        cout &amp;lt;&amp;lt; &amp;quot;Failed to initalize GLAD&amp;quot; &amp;lt;&amp;lt; endl;
+        return -1;
+    &amp;#125;
+    //渲染循环
+    //glfwWindowShouldClose函数用于检查GLFW是否被要求退出
+    while (!glfwWindowShouldClose(window))
+    &amp;#123;
+        //input
+        processInput(window);
+
+        //render
+        //设置清空屏幕所用的颜色
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        //清空屏幕的颜色缓冲
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        //glfw:swap buffer and pool IO events
+        //交换颜色缓冲，在迭代中被用来绘制，并且将会作为输出显示在屏幕上。
+        glfwSwapBuffers(window);
+
+        //检查是否触发事件、更新窗口状态，并调用对应的回调函数
+        glfwPollEvents();
+    &amp;#125;
+
+    glfwTerminate();
+
+    return 0;
+&amp;#125;
+void processInput(GLFWwindow* window)
+&amp;#123;
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+&amp;#125;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)//回调函数
+&amp;#123;
+    glViewport(0, 0, width, height);
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2020/10/20/%E7%9F%A9%E9%98%B5/</guid>
             <title>矩阵</title>

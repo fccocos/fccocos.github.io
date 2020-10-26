@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="方聪的博客-方聡のブログ" href="http://example.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="方聪的博客-方聡のブログ" href="http://example.com/atom.xml"><link rel="alternate" type="application/json" title="方聪的博客-方聡のブログ" href="http://example.com/feed.json"><link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.3"><link rel="canonical" href="http://example.com/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/"><title>GLFW 窗口的搭建 | Gun Fire = 方聪的博客 - 方聡のブログ = Fang Cong's Blog</title><meta name="generator" content="Hexo 5.2.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">GLFW 窗口的搭建</h1><div class="meta"><span class="item" title="创建时间：2020-10-26 21:46:39"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2020-10-26T21:46:39+08:00">2020-10-26</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>5.3k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>5 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Gun Fire</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main id="main"><div class="inner"><div id="content" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://example.com/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="方聡"><meta itemprop="description" content="Fang Cong's Blog, Record daily and work"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="方聪的博客 - 方聡のブログ"></span><div class="body md" itemprop="articleBody"><h1 id="配置GLFW窗口的步骤"><a href="#配置GLFW窗口的步骤" class="headerlink" title="配置GLFW窗口的步骤"></a>配置GLFW窗口的步骤</h1><h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ol><li>新建一个c++空项目</li><li>选择菜单栏中的“项目”—&gt;”项目属性”</li><li>单击“VC++目录”—&gt;找到”包含目录”和”库目录”，在里面添加include和lib</li><li>选择”连接器”—&gt;”输入”—&gt;”附加依赖项”中添加opengl32.lb和glfw3.lib</li><li>在头文件目录中新建一个glad.c文件，然后将glad中的glad.c中的代码复制粘贴即可。</li><li>到此一个项目的环境配置完成。</li></ol><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/BKkgTe"><img data-src="https://s1.ax1x.com/2020/10/26/BKkgTe.png" alt="BKkgTe.png"></a></p><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/BKAAh9"><img data-src="https://s1.ax1x.com/2020/10/26/BKAAh9.png" alt="BKAAh9.png"></a></p><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/BKAcj0"><img data-src="https://s1.ax1x.com/2020/10/26/BKAcj0.png" alt="BKAcj0.png"></a></p><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/BKAoC9"><img data-src="https://s1.ax1x.com/2020/10/26/BKAoC9.png" alt="BKAoC9.png"></a></p><p>运行效果图：<a target="_blank" rel="noopener" href="https://imgchr.com/i/BKEu2n"><img data-src="https://s1.ax1x.com/2020/10/26/BKEu2n.png" alt="BKEu2n.png"></a></p><h2 id="搭建GLFW窗口（OpenGL的运行框架）"><a href="#搭建GLFW窗口（OpenGL的运行框架）" class="headerlink" title="搭建GLFW窗口（OpenGL的运行框架）"></a>搭建GLFW窗口（OpenGL的运行框架）</h2><ol><li><strong>添加头文件</strong></li></ol><pre><code class="lang-c++">#include &lt;glad/glad.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
+//需要注意的是上述两行顺序不能颠倒，否则会报错
+</code></pre><ol><li><strong>实例化GLFW窗口</strong></li></ol><p>要做的事情有如下：</p><ul><li>初始化GLFW窗口</li><li>告知GLFW我们所使用OpenGL的版本号</li><li>明确OpenGL的渲染模式</li><li>创建GLFW窗口</li></ul><pre><code class="lang-c++">int main()
+&#123;
+    glfwInit();//初始化GLFW
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);//OpenGL的主版本号为3
+    glwWindowHint(GLFW_CONTEX_VERSION_MINOR,3);//OpenGL次版本号为3
+    glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);//OpenGL的渲染模式为内核模式
+#ifdef __APPLE__       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
+#endif //用于macOS-X系统   
+
+//创建一个窗口，并将窗口句柄赋值给window
+//一个GLFWwindow的引用类型
+GLFWwindow* window=glfwCreateWindow(800,600,&quot;LearnOpenGL&quot;,NULL);
+//窗口创建失败
+if(window==NULL)
+&#123;
+    std::cout&lt;&lt;&quot;窗口创建失败&quot;&lt;&lt;std::endl;
+    glfwTerminate();//销毁
+    return -1;
+&#125;
+&#125;
+</code></pre><ol><li><strong>用glad来管理OpenGL(glad是用来管理OpenGL的函数指针,因此在调用任何的OpenGL函数之前，都需要对glad进行初始化)</strong></li></ol><p>初始化代码如下：</p><pre><code class="lang-c++">if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+&#123;
+    std::cout&lt;&lt;&quot;Failed to initalize GLAD&quot;&lt;&lt;std::endl;
+    return -1;
+&#125;
+</code></pre><ol><li><strong>视口(OpenGL渲染窗口的尺寸大小，viewport)</strong></li></ol><p><code>glViewport(0,0,800,600)</code></p><p>我们实际上也可以将视口的维度设置为比GLFW的维度小，这样子之后所有的OpenGL渲染将会在一个更小的窗口中显示，这样子的话我们也可以将一些其它元素显示在OpenGL视口之外。然而，当用户改变窗口的大小的时候，视口也应该被调整。我们可以对窗口注册一个回调函数(Callback Function)，它会在每次窗口大小被调整的时候被调用。这个回调函数的原型如下：</p><pre><code class="lang-c++">void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+</code></pre><p>这个帧缓冲大小函数需要一个GLFWwindow作为它的第一个参数，以及两个整数表示窗口的新维度。每当窗口改变大小，GLFW会调用这个函数并填充相应的参数供你处理。</p><pre><code class="lang-c++">void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+&#123;
+    glViewport(0, 0, width, height);
+&#125;
+</code></pre><p>我们还需要注册这个函数，告诉GLFW我们希望每当窗口调整大小的时候调用这个函数：</p><pre><code class="lang-c++">glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+</code></pre><p>当窗口被第一次显示的时候framebuffer_size_callback也会被调用。对于视网膜(Retina)显示屏，width和height都会明显比原输入值更高一点。</p><ol><li><strong>渲染循环</strong></li></ol><p>如下代码：</p><pre><code class="lang-c++">while(!glfwWindowShouldClose(window))
+&#123;
+    glfwSwapBuffers(window);
+    glfwPollEvents();    
+&#125;
+</code></pre><ul><li>glfwWindowShouldClose函数在我们每次循环的开始前检查一次GLFW是否被要求退出，如果是的话该函数返回<code>true</code>然后渲染循环便结束了，之后为我们就可以关闭应用程序了。</li><li>glfwPollEvents函数检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）。</li><li>glfwSwapBuffers函数会交换颜色缓冲（它是一个储存着GLFW窗口每一个像素颜色值的大缓冲），它在这一迭代中被用来绘制，并且将会作为输出显示在屏幕上。</li></ul><p><strong>双缓冲(Double Buffer)</strong></p><p>应用程序使用单缓冲绘图时可能会存在图像闪烁的问题。 这是因为生成的图像不是一下子被绘制出来的，而是按照从左到右，由上而下逐像素地绘制而成的。最终图像不是在瞬间显示给用户，而是通过一步一步生成的，这会导致渲染的结果很不真实。为了规避这些问题，我们应用双缓冲渲染窗口应用程序。<strong>前缓冲</strong>保存着最终输出的图像，它会在屏幕上显示；而所有的的渲染指令都会在<strong>后缓冲</strong>上绘制。当所有的渲染指令执行完毕后，我们<strong>交换</strong>(Swap)前缓冲和后缓冲，这样图像就立即呈显出来，之前提到的不真实感就消除了。</p><ol><li><strong>输入</strong></li></ol><p>写一个输入进程用于处理一些输入控制，代码如下：</p><pre><code class="lang-c++">void processInput(GLFWwindow *window)
+&#123;
+    if(glfwGetKey(window,GLFW_KEY_ESCAPE)==GLFW_PRESS);//glfwGet函数用于得到一个按键输入事件
+    glfwSetWindowShouldClose(window,true);//将GLFW的WindowShouldClose设置为true,关闭GLFW窗口
+
+
+&#125;
+</code></pre><p>我们接下来在渲染循环的每一个迭代中调用processInput：</p><pre><code>while (!glfwWindowShouldClose(window))
+&#123;
+    processInput(window);
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+&#125;
+</code></pre><p>这就给我们一个非常简单的方式来检测特定的键是否被按下，并在每一帧做出处理。</p><ol><li><strong>渲染</strong></li></ol><p>我们要把所有的渲染(Rendering)操作放到渲染循环中，因为我们想让这些渲染指令在每次渲染循环迭代的时候都能被执行。代码将会是这样的：</p><pre><code>// 渲染循环
+while(!glfwWindowShouldClose(window))
+&#123;
+    // 输入
+    processInput(window);
+
+    // 渲染指令
+    ...
+
+    // 检查并调用事件，交换缓冲
+    glfwPollEvents();
+    glfwSwapBuffers(window);
+&#125;
+</code></pre><p>为了测试一切都正常工作，我们使用一个自定义的颜色清空屏幕。在每个新的渲染迭代开始的时候我们总是希望清屏，否则我们仍能看见上一次迭代的渲染结果（这可能是你想要的效果，但通常这不是）。我们可以通过调用glClear函数来清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT。由于现在我们只关心颜色值，所以我们只清空颜色缓冲。</p><pre><code>glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+</code></pre><p>注意，除了glClear之外，我们还调用了glClearColor来设置清空屏幕所用的颜色。当调用glClear函数，清除颜色缓冲之后，整个颜色缓冲都会被填充为glClearColor里所设置的颜色。在这里，我们将屏幕设置为了类似黑板的深蓝绿色。</p><p>你应该能够回忆起来我们在 <em>OpenGL</em> 这节教程的内容，glClearColor函数是一个<strong>状态设置</strong>函数，而glClear函数则是一个<strong>状态使用</strong>的函数，它使用了当前的状态来获取应该清除为的颜色。</p><p>完整代码如下：</p><pre><code class="lang-c++">/**/
+#include&lt;iostream&gt;
+#include &lt;glad/glad.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
+using namespace std;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow* window);
+
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
+int main()
+&#123;
+
+    /*初始化GLFW的窗口*/
+    glfwInit();
+
+    /*确定OpenGL主版本号*/
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+
+    /*确定OpenGL次版本号*/
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+    /*确定OpenGL的渲染模式为内核模式*/
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    /*如果使用的是macOS-X系统，还需附加如下代码*/
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+    GLFWwindow* window= glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, &quot;LearnOpenGL&quot;, NULL, NULL);
+    if (window == NULL)
+    &#123;
+        cout &lt;&lt; &quot;Failed to create GLFW window&quot; &lt;&lt; endl;
+        glfwTerminate();//终结glfw窗口
+        return -1;
+    &#125;
+
+    //将当前窗口的上下文设置为当前线程的主上下文
+    glfwMakeContextCurrent(window);
+
+    //注册一个回调函数
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    &#123;
+        cout &lt;&lt; &quot;Failed to initalize GLAD&quot; &lt;&lt; endl;
+        return -1;
+    &#125;
+    //渲染循环
+    //glfwWindowShouldClose函数用于检查GLFW是否被要求退出
+    while (!glfwWindowShouldClose(window))
+    &#123;
+        //input
+        processInput(window);
+
+        //render
+        //设置清空屏幕所用的颜色
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        //清空屏幕的颜色缓冲
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        //glfw:swap buffer and pool IO events
+        //交换颜色缓冲，在迭代中被用来绘制，并且将会作为输出显示在屏幕上。
+        glfwSwapBuffers(window);
+
+        //检查是否触发事件、更新窗口状态，并调用对应的回调函数
+        glfwPollEvents();
+    &#125;
+
+    glfwTerminate();
+
+    return 0;
+&#125;
+void processInput(GLFWwindow* window)
+&#123;
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+&#125;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)//回调函数
+&#123;
+    glViewport(0, 0, width, height);
+&#125;
+</code></pre><div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2020-10-26 21:47:41" itemprop="dateModified" datetime="2020-10-26T21:47:41+08:00">2020-10-26</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="方聡 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="方聡 支付宝"><p>支付宝</p></div><div><img data-src="/images/paypal.png" alt="方聡 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>方聡 <i class="ic i-at"><em>@</em></i>方聪的博客 - 方聡のブログ</li><li class="link"><strong>本文链接：</strong> <a href="http://example.com/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/" title="GLFW 窗口的搭建">http://example.com/2020/10/26/GLFW窗口的搭建-md/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></div></div></article></div><div class="nav"><div class="item left"><a href="/2020/10/20/%E7%9F%A9%E9%98%B5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="矩阵"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 线性代数</span><h3>矩阵</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">配置GLFW窗口的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAGLFW%E7%AA%97%E5%8F%A3%EF%BC%88OpenGL%E7%9A%84%E8%BF%90%E8%A1%8C%E6%A1%86%E6%9E%B6%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">搭建GLFW窗口（OpenGL的运行框架）</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="方聡" data-src="/images/avatar.jpg"><p class="name" itemprop="name">方聡</p><div class="description" itemprop="description">Record daily and work</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">10</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">10</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">5</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZjY29jb3M=" title="https:&#x2F;&#x2F;github.com&#x2F;fccocos"><i class="ic i-github"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE4NjA4NzIwNzE=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1860872071"><i class="ic i-cloud-music"></i></span> <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS9ndW5maXJl" title="https:&#x2F;&#x2F;about.me&#x2F;gunfire"><i class="ic i-address-card"></i></span> <span class="exturl item email" data-url="bWFpbHRvOmd1bmZpcmVmYzcwQG0xNjMuY29t" title="mailto:gunfirefc70@m163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li><li class="item"><a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友達</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a></div><span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/display/" title="Step.3 界面显示">Step.3 界面显示</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2020/10/17/latex-test/" title="latex_test">latex_test</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a></div><span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%80%83%E7%A0%94/" title="分类于 考研">考研</a> <i class="ic i-angle-right"></i> <a href="/categories/%E8%80%83%E7%A0%94/note/" title="分类于 高等数学">高等数学</a></div><span><a href="/2020/10/17/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/" title="无穷级数">无穷级数</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a></div><span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/config/" title="Step.2 基本配置">Step.2 基本配置</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a></div><span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%80%83%E7%A0%94/" title="分类于 考研">考研</a> <i class="ic i-angle-right"></i> <a href="/categories/%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/" title="分类于 数学">数学</a> <i class="ic i-angle-right"></i> <a href="/categories/%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/note/" title="分类于 线性代数">线性代数</a></div><span><a href="/2020/10/20/%E7%9F%A9%E9%98%B5/" title="矩阵">矩阵</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2020/10/26/GLFW%E7%AA%97%E5%8F%A3%E7%9A%84%E6%90%AD%E5%BB%BA-md/" title="GLFW窗口的搭建">GLFW窗口的搭建</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a></div><span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/" title="Hexo主题Shoka &amp; multi-markdown-it渲染器使用说明">Hexo主题Shoka & multi-markdown-it渲染器使用说明</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/c-c/" title="分类于 c/c++">c/c++</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/c-c/%E8%80%83%E7%A0%94/" title="分类于 考研">考研</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/c-c/%E8%80%83%E7%A0%94/DataAndStructure/" title="分类于 数据结构">数据结构</a></div><span><a href="/2020/10/16/computer-science/theStructureOfData/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA/" title="绪论">绪论</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2020</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">方聡 @ Gun Fire</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">36k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">33 分钟</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"2020/10/26/GLFW窗口的搭建-md/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.3"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,log:!1,model:{jsonPath:"/live2dw/assets/sample/SampleApp1/assets/live2d/haru/haru.model.json"},display:{position:"right",width:400,height:600},mobile:{show:!0,scale:.5},react:{opacityDefault:.5,opacityOnHover:.2}})</script></body></html>
