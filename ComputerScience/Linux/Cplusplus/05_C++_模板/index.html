@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="方聪的博客" href="http://yoursite.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="方聪的博客" href="http://yoursite.com/atom.xml"><link rel="alternate" type="application/json" title="方聪的博客" href="http://yoursite.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7C3.5:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="笔记,嵌入式,C++语言"><link rel="canonical" href="http://yoursite.com/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/"><title>05_C++_模板 - 计算机科学 | Gunfire = 方聪的博客 = 个人的博客</title><meta name="generator" content="Hexo 5.4.2"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">05_C++_模板</h1><div class="meta"><span class="item" title="创建时间：2022-04-18 10:00:00"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2022-04-18T10:00:00+08:00">2022-04-18</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>11k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>10 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Gunfire</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/ComputerScience/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://yoursite.com/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="方聪"><meta itemprop="description" content="个人的博客, 记录生活 铭记感动 立足当下 创造未来"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="方聪的博客"></span><div class="body md" itemprop="articleBody"><h1 id="c模板"><a class="anchor" href="#c模板">#</a> C++ 模板</h1><h2 id="模板概论"><a class="anchor" href="#模板概论">#</a> 模板概论</h2><p>c++ 提供了函数模板 (function template.)。所谓 **&lt;u &gt; 函数模板，实际上是建立一个通用函数，其函数类型和形参类型不具体制定，用一个虚拟的类型来代表，这个通用函数就成为函数模板。&lt;/u&gt;** 凡是函数体相同的函数都可以用这个模板代替，不必定义多个函数，只需在模板中定义一次即可。在调用函数时系统会根据实参的类型来取代模板中的虚拟类型，从而实现不同函数的功能。</p><p>c++ 提供两种模板机制：函数模板和类模板</p><p>类属：类型参数化，又称参数模板</p><p>总结：</p><ul><li>🔶模板把函数或类要处理的数据类型参数化，表现为参数的多态性，成为类属。</li><li>🔶模板用于表达逻辑结构相同，但具体数据元素类型不同的数据对象的通用行为。</li></ul><blockquote><p>C++ 模板最重要的技术：类型参数化</p></blockquote><h2 id="函数模板"><a class="anchor" href="#函数模板">#</a> 函数模板</h2><h3 id="函数模板的定义"><a class="anchor" href="#函数模板的定义">#</a> 函数模板的定义</h3><pre><code class="language-c++">template &lt;class T&gt;//定义一个模板，模板的通用类型T, class和typename是一样的
+//紧跟函数
+void swap_temp(T &amp;a, T &amp;b)
+&#123;
+    T tmp = a;
+    a = b;
+    b = tmp;
+&#125;
+void test03()
+&#123;
+    char a =1;
+    char b = 2;
+    int c = 3;
+    int d = 4;
+    swap_temp(a,b);//合法
+    swap_temp&lt;char&gt;(a,b);//显示指定类型
+    swap_temp(b,c);//错误， 自动类型推导的结果不一致
+    swap_temp(c,d);//合法
+&#125;
+
+</code></pre><h3 id="练习"><a class="anchor" href="#练习">#</a> 练习</h3><p>使用函数模板实现数组排序：</p><pre><code class="language-c++">//函数模板用于实现数组排序
+template &lt;class T&gt;
+void array_sort(T *a, int n)
+&#123;
+    for(int i = 0; i &lt; n-1; ++i)
+    &#123;
+        for(int j = 1; j &lt; n; ++j)
+        &#123;
+            if(a[i]&gt;a[j])
+            &#123;
+                T tmp = a[i];
+                a[i] = a[j];
+                a[j] = a[i];
+            &#125;
+        &#125;
+    &#125;
+&#125;
+template &lt;class T&gt;
+void print_array(T *p, int n)
+&#123;
+    for(int i=0; i&lt;n; ++i)
+        cout&lt;&lt;p[i]&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+&#125;
+void test01()
+&#123;
+    int a[]=&#123;1,6,4,3,77,22,13,456,1,123&#125;;
+    array_sort(a, sizeof(a)/sizeof(a[0]));
+    print_array(a,sizeof(a)/sizeof(a[0]))
+&#125;
+void test02()
+&#123;
+    char b[]=&#123;'w','t','c','a','q','m','y','0','9'&#125;;
+    array_sort&lt;char&gt;(a, sizeof(a)/sizeof(a[0]));
+    print_array(a,sizeof(a)/sizeof(a[0]))
+&#125;
+</code></pre><h3 id="函数模板和普通函数的区别"><a class="anchor" href="#函数模板和普通函数的区别">#</a> 函数模板和普通函数的区别</h3><p>🔶函数模板不允许自动类型转换</p><p>🔶普通函数能够进行类型自动转换</p><p>🔶调用普通函数不用推导</p><p>🔶 <code>Myadd&lt;&gt;(a,a)</code> 指定模板函数调用</p><p>🔶 <code>Myadd&lt;int&gt;(a,a)</code> 显示指定类型调用模板函数</p><h3 id="函数模板和普通函数在一起调用的规则"><a class="anchor" href="#函数模板和普通函数在一起调用的规则">#</a> 函数模板和普通函数在一起调用的规则</h3><p>1️⃣ C++ 编译器优先考虑普通函数</p><p>2️⃣ 可以通过空模板实例参数列表的语法🏷限定编译器💻只能通过函数模板匹配</p><p>3️⃣函数模板可以像 普通函数一样被重载</p><p>4️⃣ 如果函数模板可以产生一个更好的匹配，那么选择模板</p><h2 id="模板机制剖析"><a class="anchor" href="#模板机制剖析">#</a> 模板机制剖析</h2><p>🤔 为什么模板函数可以和普通函数放在一起？C++ 编译器是如何实现函数模板机制的？</p><h3 id="编译过程"><a class="anchor" href="#编译过程">#</a> 编译过程</h3><p><code>hello.cpp</code> 程序是高级 c 语言程序，这种程序易于被人读懂。为了在系统上运行 <code>hello.c</code> 程序，每一条 c 语句都必须转化为低级的机器指令。然后将这些机器指令打包成可执行目标文件格式，并以二进制形式存储于磁盘中。预处理 ( <code>Pre-processing</code> )➡️编译 ( <code>Compiling</code> )➡️汇编 ( <code>Assembling</code> )➡️链接 ( <code>Linking</code> )</p><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Lri2He"><img data-src="https://s1.ax1x.com/2022/04/20/Lri2He.png" alt="Lri2He.png"></a></p><p>1️⃣ <code>hello..c</code> 经过预处理器，将宏展开，生成的文件 <code>hello.i</code></p><p>2️⃣ <code>hello.i</code> 经过编译器，将文件编译成汇编语言，生成文件为 <code>hello.s</code></p><p>3️⃣ <code>hello.s</code> 经过汇编器，将文件编译成目标文件 <code>hello.o</code> (win 下为 <code>hello.obj</code> )</p><p>4️⃣ <code>hello.o</code> 经过链接器，将文件编译成可执行文件</p><h3 id="模板函数机制"><a class="anchor" href="#模板函数机制">#</a> 模板函数机制</h3><p>1️⃣ 编译器并不是把函数模板处理成能够处理任何类型的函数</p><p>2️⃣ 函数模板通过具体类型产生不同的函数</p><p>3️⃣编译器会对函数模板进行两次编译，在声明的地方对模板代码本身进行编译，在调用的地方对参数替换后的代码进行编译。</p><h3 id="模板函数的局限性"><a class="anchor" href="#模板函数的局限性">#</a> 模板函数的局限性</h3><p>编写的模板函数很可能无法处理某些类型，另一方面，有时候通用化是有意义的，但 C++ 语法不允许这样做。为了解决这种问题，可以提供模板的重载，为这些特定的类型提供具体化的模板。</p><p>函数模板具体化语法： <code>template&lt;&gt; void mySwap&lt;Person&gt;(Person &amp;p1, Person&amp;p2)</code></p><h2 id="类模板"><a class="anchor" href="#类模板">#</a> 类模板</h2><h3 id="类模板语法"><a class="anchor" href="#类模板语法">#</a> 类模板语法</h3><pre><code class="language-c++">template &lt;class T1, class T2&gt;
+class Animal
+&#123;
+public:
+    Animal(T1 a, T2 b):age(a),data(b)&#123;&#125;
+    T1 age;
+    T2 data;
+
+&#125;;
+void test()
+&#123;
+    //类模板不能自动类型推导
+    Animal&lt;int,int&gt; dog(10,10);//显示指定
+    Aninmal&lt;int,string&gt; cat(4,&quot;lili&quot;);
+&#125;
+</code></pre><h3 id="类模板作为函数参数"><a class="anchor" href="#类模板作为函数参数">#</a> 类模板作为函数参数</h3><pre><code class="language-c++">template &lt;class T1, class T2&gt;
+class Animal
+&#123;
+public:
+    Animal(T1 a, T2 b):age(a),data(b)&#123;&#125;
+    T1 age;
+    T2 data;
+
+&#125;;
+void show(Animal&lt;int,int&gt; &amp;p)
+&#123;
+    cout&lt;&lt;p.age&lt;&lt;&quot; &quot;&lt;&lt;p.data&lt;&lt;endl;
+&#125;
+//函数模板
+template &lt;class T1, class T2&gt;
+void show(Animal&lt;T1, T2&gt; &amp;p)
+&#123;
+     cout&lt;&lt;p.age&lt;&lt;&quot; &quot;&lt;&lt;p.data&lt;&lt;endl;
+&#125;
+template &lt;class T1&gt;
+void show1(T1 &amp;p)
+&#123;
+    cout&lt;&lt;p.age&lt;&lt;&quot; &quot;&lt;&lt;p.data&lt;&lt;endl;
+&#125;
+void test()
+&#123;
+    //类模板不能自动类型推导
+    Animal&lt;int,int&gt; dog(10,10);//显示指定
+    show(dog);
+    Aninmal&lt;int,string&gt; cat(4,&quot;lili&quot;);
+    show(cat);
+    show1(cat);
+&#125;
+</code></pre><h3 id="类模板派生普通类"><a class="anchor" href="#类模板派生普通类">#</a> 类模板派生普通类</h3><p>🔶 类模板遇到继承，在继承时，继承的类必须是一个模板类</p><p>🔶 类模板遇到继承，可以将子类写成类模板</p><pre><code class="language-c++">template &lt;class T&gt;
+class Base
+&#123;
+public:
+    Base(T a)
+    &#123;
+        this-&gt;a = a;
+    &#125;
+    T a;
+&#125;;
+//子类为普通类
+class Son1: public Base&lt;int&gt;
+&#123;
+public:
+    Son1(int x1, int a):Base&lt;int&gt;(a),x(x1)&#123;&#125;
+    int x;
+&#125;;
+//子类为类模板
+template &lt;class T1, class T2&gt;
+class Son2: public Base&lt;T2&gt;
+&#123;
+public:
+    Son2(T1 x1, T2 a):Base&lt;T2&gt;(a),x(x1)&#123;&#125;
+    T1 x;
+&#125;;
+void test01()
+&#123;
+    Son1 p(10,20);
+    Son2 p1(10,&quot;linker&quot;);
+&#125;
+
+</code></pre><h3 id="类模板成员函数的类内实现"><a class="anchor" href="#类模板成员函数的类内实现">#</a> 类模板成员函数的类内实现</h3><pre><code class="language-c++">template &lt;class T1, class T2&gt;
+class Person
+&#123;
+public:
+    Person(T1 a, T2 b)
+    &#123;
+        this-&gt;a = a;
+        this-&gt;b = b;
+    &#125;
+    void show()
+    &#123;
+        cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;endl;
+    &#125;
+    T1 a;
+    T2 b;
+&#125;
+void test()
+&#123;
+    Person &lt;int, string&gt; p(10, &quot;lili&quot;);
+    p.show();
+&#125;
+</code></pre><h3 id="类模板成员函数的类外实现"><a class="anchor" href="#类模板成员函数的类外实现">#</a> 类模板成员函数的类外实现</h3><p>类模板成员函数的类外实现需要 &lt;u&gt; 写成函数模板 &lt;/u&gt;</p><pre><code class="language-c++">template &lt;class T1, class T2&gt;
+class Person
+&#123;
+public:
+    Person(T1 a, T2 b);
+    void show();
+
+    T1 a;
+    T2 b;
+&#125;
+//类外实现 需要写成函数模板
+template &lt;class T1, class T2&gt;
+Person&lt;T1, T2&gt;::Person(T1 a, T2 b)
+&#123;
+    this-&gt;a = a;
+    this-&gt;b = b;
+&#125;
+template &lt;class T1, class T2&gt;
+void Person&lt;T1,T2&gt;::show()
+&#123;
+    cout&lt;&lt;this-&gt;a&lt;&lt;&quot; &quot;&lt;&lt;this-&gt;b&lt;&lt;endl;
+&#125;
+void test()
+&#123;
+    Person &lt;int, string&gt; p(10, &quot;lili&quot;);
+    p.show();
+&#125;
+</code></pre><h3 id="类模板成员函数的创建机制"><a class="anchor" href="#类模板成员函数的创建机制">#</a> 类模板成员函数的创建机制</h3><p>类模板成员函数是在调用的时候创建的，没有调用编译器不会创建只有声明。</p><pre><code class="language-c++">class A
+&#123;
+public:
+    void showA()
+    &#123;
+        cout&lt;&lt;&quot;class A&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+class B
+&#123;
+public:
+    void showB()
+    &#123;
+        cout&lt;&lt;&quot;class B&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+template &lt;class T&gt;
+class C
+&#123;
+public:
+    void foo1()
+    &#123;
+        obj.showA();
+    &#125;
+    void foo2()
+    &#123;
+        obj.showB();
+    &#125;
+    T obj;
+&#125;;
+</code></pre><h3 id="类模板头文件和源文件分离问题"><a class="anchor" href="#类模板头文件和源文件分离问题">#</a> 类模板头文件和源文件分离问题</h3><p>🇹🇴 类模板的文件，必须将函数的定义和类的声明写到一个文件</p><p><code>Person.h</code> 文件中</p><pre><code class="language-c++">#pragma once
+template &lt;class T1, class T2&gt;
+class person
+&#123;
+public:
+    person(T1 a, T2 b);
+    void show();
+    T1 a;
+    T2 b;
+&#125;
+</code></pre><p><code>Person.cpp</code> 文件中</p><pre><code class="language-c++">#include &quot;Person.h&quot;
+template &lt;class T1, class T2&gt;
+person&lt;T1,T2&gt;::person(T1 a, T2 b)
+&#123;
+    this-&gt;a = a;
+    this-&gt;b = b;
+&#125;
+template &lt;class T1, class T2&gt;
+void person&lt;T1,T2&gt;::show()
+&#123;
+    cout&lt;&lt;this-&gt;a&lt;&lt;&quot; &quot;&lt;&lt;this-&gt;b&lt;&lt;endl;
+&#125;
+</code></pre><p><code>main.cpp</code> 文件中</p><pre><code class="language-c++">#include &quot;person.h&quot;
+int main()
+&#123;
+    //调用构造函数和show函数需要创建的时候，无法找到这写函数的定义
+    person&lt;int, int&gt; p(10,20);
+    p.show();//无法连接show函数定义
+&#125;
+</code></pre><p><strong>正确用法</strong></p><p>用 <code>.hpp</code> 文件声明和定义类模板</p><p>在 <code>Person.hpp</code> 文件中</p><pre><code class="language-c++">#pragma once
+template &lt;class T1, class T2&gt;
+class person
+&#123;
+public:
+    person(T1 a, T2 b);
+    void show();
+    T1 a;
+    T2 b;
+&#125;
+template &lt;class T1, class T2&gt;
+person&lt;T1,T2&gt;::person(T1 a, T2 b)
+&#123;
+    this-&gt;a = a;
+    this-&gt;b = b;
+&#125;
+template &lt;class T1, class T2&gt;
+void person&lt;T1,T2&gt;::show()
+&#123;
+    cout&lt;&lt;this-&gt;a&lt;&lt;&quot; &quot;&lt;&lt;this-&gt;b&lt;&lt;endl;
+&#125;
+</code></pre><p>在 <code>main.cpp</code> 文件中</p><pre><code class="language-c++">#include &quot;Person.hpp&quot;
+int main()
+&#123;
+    person&lt;int, int&gt; p(10,20);//合法
+    p.show();//合法
+&#125;
+</code></pre><h3 id="类模板遇到友元"><a class="anchor" href="#类模板遇到友元">#</a> 类模板遇到友元</h3><pre><code class="language-c++">//声明
+template &lt;class T1, class T2&gt;
+void show_Person(Person&lt;T1,T2&gt;&amp;p);
+
+template &lt;class T1, class T2&gt;
+class Person
+&#123;
+    //在类内定义
+    friend void show_Person&lt;&gt;(Person&lt;T1,T2&gt;&amp;p);
+    //在类内定义并实现
+    friend void show_Person1(Person&lt;T1,T2&gt;&amp;p)
+    &#123;
+        cout&lt;&lt;p.a&lt;&lt;&quot; &quot;&lt;&lt;p.b&lt;&lt;endl;
+    &#125;
+public:
+    Person(T1 a, T2 b)
+    &#123;
+        this-&gt;a = a;
+        this-&gt;b = b;
+    &#125;
+private:
+    T1 a;
+    T2 b;
+&#125;;
+//在类外实现
+template &lt;class T1, class T2&gt;
+void show_Person(Person&lt;T1,T2&gt;&amp;p)
+&#123;
+    cout&lt;&lt;p.a&lt;&lt;&quot; &quot;&lt;&lt;p.b&lt;&lt;endl;
+    
+&#125;
+void test01()
+&#123;
+    
+&#125;
+</code></pre><h3 id="虚基类模板"><a class="anchor" href="#虚基类模板">#</a> 虚基类模板</h3><h4 id="虚函数的实现原理"><a class="anchor" href="#虚函数的实现原理">#</a> 虚函数的实现原理</h4><p>拥有虚函数的每一个类的对象中都存在一个 vfptr 指针，vfptr 指针指向本类虚函数入口的查找表 vtable。指向子类对象的指针被上转义 (upcasting) 成指向父类的指针后，其指向虚函数表 vtable 的指针不会改变，即 vtable 的入口地址没有改变，从而保留了子类对象的类信息，从而使得指向父类的指针可以调用到子类的虚函数实现。</p><h3 id="由虚函数启发虚基类模板"><a class="anchor" href="#由虚函数启发虚基类模板">#</a> 由虚函数启发虚基类模板</h3><p>如果基类或模板类中保存有子类的类型信息，则在编译期也可以通过提取该类型信息而正确调用该类型的成员函数，实现编译期的多态。</p><h3 id="虚基类模板-2"><a class="anchor" href="#虚基类模板-2">#</a> 虚基类模板</h3><p>虚基类模板很简单，只需先为拥有共同概念的类型定义一个共同的基类模板，比如为矩阵类型定义一个基类模板：</p><pre><code class="language-c++">template&lt;typename T&gt;
+struct matrix_concept&#123;
+typedef T type;
+&#125;；
+</code></pre><p>这样一个基类模板<strong>除了将模板参数再定义外并无其他内容</strong>，即 &lt;u&gt; 该模板只是将其模板实参类型 T 保存下来；然后在声明具体的合乎该概念的类型时，以该概念所对应的基类模板的实例为基类，实例的模板实参即为该类型本身。&lt;/u&gt;</p><p>例如，两个符合矩阵概念的矩阵类 dense_matrix 和 sparse_matrix, 可以按照如下方式声明为 matrix_concept 模板实例的派生类。</p><pre><code class="language-c++">class dense_matrix:public matrix_concept&lt;dense_maxtrix&gt;&#123;&#125;
+class spare_matrix:public matrix_concept&lt;sparse_maxtrix&gt;&#123;&#125;
+//根据基类可以知道，dense_maxtrix和spare_maxtrix都被重定义为type，即基类中有子类的类型信息了
+</code></pre><p>通过将基类模板的实参设置为派生类自身类型，可以使基类中存子类的类型信息。</p><p>上述代码的写法相当于先前置声明子类，然后实现基类，再实现子类。</p><pre><code class="language-c++">//矩阵类前置声明
+class dense_maxtrix;
+class sparse_maxtrix;
+
+//生成模板实例类型
+typedef matrix_concept&lt;dense_matrix&gt; dense_matrix_base;
+typedef matrix_concept&lt;sparse_matrix&gt; sparse_matrix_base;
+
+//矩阵类实现
+class dense_matrix:public dense_matrix_base&#123;&#125;;
+class sparse_matrix:public sparse_matrix_base&#123;&#125;;
+</code></pre><p>由于在生成基类模板 matrix concept 的实例时，只有子类的前置声明而无实现，所以基类模板中的内容只要不涉及子类类型的具体实现时都是可以编译的。一旦其中涉及子类的具体实现，便会编译出错。下面的代码便演示了子类前置定义在基类模板中的几种可行与不可行的用法：</p><pre><code class="language-c++">template&lt;class T&gt;
+struct matrix concept&#123;
+typedef T type; //可行
+typedef T*pointer type; //可行
+typedef typename T::value value;//不可行
+T a;//不可行。前置声明不是完全的类型声明，不能用于生成实例
+&#125;;
+</code></pre><h4 id="为模板类声明基类模板"><a class="anchor" href="#为模板类声明基类模板">#</a> 为模板类声明基类模板</h4><pre><code class="language-c++">template &lt;typename T&gt;
+class dense_matrix:public matrix_concept&lt;dense_matrix&lt;T&gt;&gt;&#123;&#125;;
+template&lt;typename T&gt;
+class sparse_matrix:public matrix_concept&lt;sparse_matrix&lt;T&gt;&gt;&#123;&#125;;
+</code></pre><p>通过这样一种机制，基类模板 matrix_concept 中已经存有子类类型信息。并且，只要约定：</p><p>​	I) <code>matrix concept&lt;T&gt;</code> 必然是 T 的基类；</p><p>​	2) 任何 <code>matrix_concept&lt;T&gt;</code> 的实例都是由<strong> T 的实例上转义而来的</strong>。则任何 <code>matrix_concept&lt;T&gt;</code> 的实例都可以<strong>安全下转义回 T 的实例</strong>。</p><p>利用这一特点，可以用 <code>matrix_concept&lt;T&gt;</code> 和原理类似的向量概念类模板 <code>vector_concept&lt;T&gt;</code> 为函数参数类型编写算法，并在算法中将参数实例直接下转义成真正的矩阵和向量类型后再实现相应算法，从而以一个全覆盖的函数模板作为入口所带来的种种弊端就可以避免。按照这一思路，面向概念基类模板结构的矩阵 × 向量，以及向量 × 矩阵的算法模板的实现方式如下所示：</p><pre><code class="language-c++">//矩阵x向量
+template &lt;typename T0, typename T1&gt;
+typename vector_concept&lt;T0&gt;::type 
+operator*(matrix_concept&lt;T0&gt; const &amp;mc, vector_concept&lt;T1&gt; const &amp;vc)
+&#123;
+    typedef typename matrix_concept&lt;T0&gt;::type matrix_type;
+    typedef typename vector_concept&lt;T1&gt;::type vector_type;
+    //将函数参数向下转义
+    matrix_type const &amp;m(*reinterpret_cast&lt;const matrix_type*&gt;(&amp;mc));
+    vector_type const &amp;v(*reinterpret_cast&lt;const vector_type*&gt;(&amp;vc));
+    //具体实现略
+&#125;
+//向量x矩阵
+template &lt;class T0, class T1&gt;
+typename vector_comcept&lt;T1&gt;::type
+operator*(vector_concept&lt;T0&gt; const &amp;vc, matrix_concept&lt;T1&gt; const &amp;mc)
+&#123;
+    typedef typename vector_concept&lt;T0&gt;::type vector_type;
+    typedef typename matrix_concept&lt;T1&gt;::type matrix_type;
+    
+    //将函数参数向下转
+    vector_type const &amp;v(*reinterpret_cast&lt;const vector_type*&gt;(&amp;vc));
+    matrix_type const &amp;m(*reinterpret_cast&lt;const matrix_type*&gt;(&amp;mc));
+&#125;
+</code></pre><p>没有标签与特性，也无须为确定函数返回类型而大费周章，只需根据算式左右操作数的类型选择合适的基类模板实例作为参数即可。</p><p>如果说虚函数是将子类的类型信息保存在每个子类实例中以达到运行期的多态，则上述<strong>基类模板是将子类的类型信息保存在基类类型中以达到一种编译期的多态</strong>。当然，之所以能如此实现，还有一个关键的假定，即<strong>任何基类模板实例只能由其所保存的子类实例上转义而来，否则算法中所用的下转义操作将引发严重的内存访问错误。</strong></p><p>** 为了防止大意而生成基类模板实例，可将基类模板的默认构造函数设为 protected；** 但尽管如此，还不能严格保证基类模板实例是由其所存子类实例上转义而来，只能在写代码<br>时更加谨慎严格地遵守约定。</p><p><strong>基类模板还可以相同方式再继承其他基类模板，从而可提供更多层次的概念操作支持。</strong><br>假如矩阵和向量概念都支持对其全部元素进行迭代的话（比如像标准容器那样提供 begin (<br>和 end0 迭代器)，则两个概念相当于从另一个 “序列” 概念细化而来。相应地，基类模板<br>定义可以改为：</p><pre><code class="language-c++">template&lt;typename T&gt;
+struct sequence_concept
+&#123;
+    typedef T type;
+&#125;;
+template&lt;typename T&gt;
+struct matrix_concept: sequence_concept&lt;T&gt;&#123;&#125;;
+template&lt;typename T&gt;
+struct vector_concept: sequence_concept&lt;T&gt;&#123;&#125;;
+</code></pre><p>有此继承关系后，我们可利用 sequence_concept 为矩阵和向量统一实现其与标量（即其元素类型) 相乘的运算符重载：</p><pre><code class="language-c++">//变量x矩阵或向量（即序列概念）
+template &lt;typename T&gt;
+typename sequence_concept&lt;T&gt;::type
+operator*(typename sequence_concept&lt;T&gt;::type::value_type const &amp;v, sequence_concept&lt;T&gt; const &amp;sc)
+&#123;
+    typedef typename sequence_concept&lt;T&gt;::type seqence_type;
+    sequence_type const &amp;s(*reinterpret_cast&lt;const sequence_type*&gt;(&amp;sc));
+    //用迭代器遍历矩阵或向量的每一个元素，将元素乘以v值后赋予新的矩阵或向量实例
+    return s;
+&#125;
+</code></pre><p>C++ 允许多重继承，可使某类型或者某个概念继承自多个独立概念基类模板。</p><p>活用基类模板，可为类模板提供严谨而详细的多层次概念抽象，使得在不同层次的概念为所属类模板统一实现算法更加轻松。但需要再次强调，这一方法必须严格遵守概念基类实例，必然由子类实例上转义而来的约定，否则将使算法中所用的下转义语句会成为严重的隐患。</p><h3 id="类模板的应用"><a class="anchor" href="#类模板的应用">#</a> 类模板的应用</h3><p>设计一个数组模板类 (MyArray)，完成对不同类型元素的管理</p><pre><code class="language-c++">//用户接口
+1. 根据指定的位置添加元素
+2. 获取指定位置的元素
+3. 尾插法插入数据 尾部删除数据
+4. 获取数组长度
+5. 重载[]操作符
+6. 重写拷贝构造
+template &lt;typename T&gt;
+class Array
+&#123;
+public:
+    
+private:
+    int size;
+    int capacity;
+    T *ptr;
+&#125;;
+</code></pre><h4 id="对象池"><a class="anchor" href="#对象池">#</a> 对象池</h4><h5 id="对象池的好处"><a class="anchor" href="#对象池的好处">#</a> 对象池的好处</h5><p>对于那些创建和销毁需要浪费大量资源的对象或者需要频繁创建和销毁的对象，我们可以使用对象池来管理这些对象，即可以减少对象创建和销毁时的系统开销，又便于管理对象。</p><h5 id="对象池的实现原理"><a class="anchor" href="#对象池的实现原理">#</a> 对象池的实现原理</h5><p>对象池主要由三个部分组成对象池、对象管理器、各种对象。</p><p>首先，通过对象管理器，从对象池中获取一个对象，如果没有就创建一个，并返回对象引用；</p><p>其次，获得引用后，就可以直接使用对象的成员函数；</p><p>最后，当对象使用完毕后，只需要清空数据，不删除对象，将其重新放入到对象池中，等待下一次获取。</p><h5 id="对象池结构分析"><a class="anchor" href="#对象池结构分析">#</a> 对象池结构分析</h5><p>由对象池的构成可以将对象池分成三个类，对象池类、对象管理类和对象类。根据应用要求，对象池和对象管理器都只能有且只有一个实例对象，因此对象池和对象管理器都可以用单例模式来实现，由于对象可以有很多个不同类型的对象，因此可以用工厂方法模式实现对象的创建。接下来我们需要讨论一下对象池的存储组织方式。使用数组，那么需要进行预配分，如果使用动态数组，那么需要进行指针管理。</p><h5 id="对象池类图"><a class="anchor" href="#对象池类图">#</a> 对象池类图</h5><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Lof8fI"><img data-src="https://s1.ax1x.com/2022/04/25/Lof8fI.png" alt="Lof8fI.png"></a></p><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css"><div class="tags"><a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> 笔记</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"><i class="ic i-tag"></i> 嵌入式</a> <a href="/tags/C-%E8%AF%AD%E8%A8%80/" rel="tag"><i class="ic i-tag"></i> C++语言</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-03-11 17:49:19" itemprop="dateModified" datetime="2023-03-11T17:49:19+08:00">2023-03-11</time> </span><span id="ComputerScience/Linux/Cplusplus/05_C++_模板/" class="item leancloud_visitors" data-flag-title="05_C++_模板" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="方聪 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="方聪 支付宝"><p>支付宝</p></div><div><img data-src="/images/paypal.png" alt="方聪 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>方聪 <i class="ic i-at"><em>@</em></i>方聪的博客</li><li class="link"><strong>本文链接：</strong> <a href="http://yoursite.com/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/" title="05_C++_模板">http://yoursite.com/ComputerScience/Linux/Cplusplus/05_C++_模板/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="04_C++_类和对象"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机科学</span><h3>04_C++_类和对象</h3></a></div><div class="item right"><a href="/ComputerScience/Linux/Cplusplus/06_C++_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevarprfj20zk0m8npd.jpg" title="06_C++_类型转换"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机科学</span><h3>06_C++_类型转换</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.</span> <span class="toc-text">C++ 模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%A6%82%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">模板概论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.2.</span> <span class="toc-text">函数模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">函数模板的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.2.2.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">函数模板和普通函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%9C%A8%E4%B8%80%E8%B5%B7%E8%B0%83%E7%94%A8%E7%9A%84%E8%A7%84%E5%88%99"><span class="toc-number">1.2.4.</span> <span class="toc-text">函数模板和普通函数在一起调用的规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%9C%BA%E5%88%B6%E5%89%96%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">模板机制剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">模板函数机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text">模板函数的局限性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.4.</span> <span class="toc-text">类模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.1.</span> <span class="toc-text">类模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">类模板作为函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%B4%BE%E7%94%9F%E6%99%AE%E9%80%9A%E7%B1%BB"><span class="toc-number">1.4.3.</span> <span class="toc-text">类模板派生普通类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%86%85%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.4.</span> <span class="toc-text">类模板成员函数的类内实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%A4%96%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.5.</span> <span class="toc-text">类模板成员函数的类外实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.6.</span> <span class="toc-text">类模板成员函数的创建机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C%E6%BA%90%E6%96%87%E4%BB%B6%E5%88%86%E7%A6%BB%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.7.</span> <span class="toc-text">类模板头文件和源文件分离问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E9%81%87%E5%88%B0%E5%8F%8B%E5%85%83"><span class="toc-number">1.4.8.</span> <span class="toc-text">类模板遇到友元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E5%9F%BA%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.4.9.</span> <span class="toc-text">虚基类模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.9.1.</span> <span class="toc-text">虚函数的实现原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1%E8%99%9A%E5%87%BD%E6%95%B0%E5%90%AF%E5%8F%91%E8%99%9A%E5%9F%BA%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.4.10.</span> <span class="toc-text">由虚函数启发虚基类模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E5%9F%BA%E7%B1%BB%E6%A8%A1%E6%9D%BF-2"><span class="toc-number">1.4.11.</span> <span class="toc-text">虚基类模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%A3%B0%E6%98%8E%E5%9F%BA%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.4.11.1.</span> <span class="toc-text">为模板类声明基类模板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.4.12.</span> <span class="toc-text">类模板的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="toc-number">1.4.12.1.</span> <span class="toc-text">对象池</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.4.12.1.1.</span> <span class="toc-text">对象池的好处</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.12.1.2.</span> <span class="toc-text">对象池的实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-number">1.4.12.1.3.</span> <span class="toc-text">对象池结构分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%B1%BB%E5%9B%BE"><span class="toc-number">1.4.12.1.4.</span> <span class="toc-text">对象池类图</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/Politics/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%B5%8B%E8%AF%95/" rel="bookmark" title="思维导图测试">思维导图测试</a></li><li><a href="/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" rel="bookmark" title="考研数据结构算法">考研数据结构算法</a></li><li><a href="/ComputerScience/Linux/Clanguage/1_C_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="bookmark" title="1_C_基本概念">1_C_基本概念</a></li><li><a href="/ComputerScience/Linux/Clanguage/2_C_%E6%95%B0%E7%BB%84/" rel="bookmark" title="2_C_数组">2_C_数组</a></li><li><a href="/ComputerScience/Linux/Clanguage/3_C_%E5%87%BD%E6%95%B0/" rel="bookmark" title="3_C_函数">3_C_函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/4_C_%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB/" rel="bookmark" title="4_C_变量的存储类别">4_C_变量的存储类别</a></li><li><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" rel="bookmark" title="5_C_预处理">5_C_预处理</a></li><li><a href="/ComputerScience/Linux/Clanguage/6_C_%E6%8C%87%E9%92%88/" rel="bookmark" title="6_C_指针">6_C_指针</a></li><li><a href="/ComputerScience/Linux/Clanguage/7_C_%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%94%B3%E8%AF%B7/" rel="bookmark" title="7_C_动态内存申请">7_C_动态内存申请</a></li><li><a href="/ComputerScience/Linux/Clanguage/8_C_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" rel="bookmark" title="8_C_字符串处理函数">8_C_字符串处理函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/9_C_%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E6%9E%9A%E4%B8%BE/" rel="bookmark" title="9_C_结构体、共用体、枚举">9_C_结构体、共用体、枚举</a></li><li><a href="/ComputerScience/Linux/Clanguage/10_C_%E9%93%BE%E8%A1%A8/" rel="bookmark" title="10_C_链表">10_C_链表</a></li><li><a href="/ComputerScience/Linux/Cplusplus/01_C++_%E6%A6%82%E8%BF%B0/" rel="bookmark" title="01_C++_概述">01_C++_概述</a></li><li><a href="/ComputerScience/Linux/Cplusplus/02_C++_%E5%88%9D%E5%A7%8B/" rel="bookmark" title="02_C++_初始">02_C++_初始</a></li><li><a href="/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/" rel="bookmark" title="03_C++_对C的扩展">03_C++_对C的扩展</a></li><li><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="04_C++_类和对象">04_C++_类和对象</a></li><li class="active"><a href="/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="05_C++_模板">05_C++_模板</a></li><li><a href="/ComputerScience/Linux/Cplusplus/06_C++_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="06_C++_类型转换">06_C++_类型转换</a></li><li><a href="/ComputerScience/Linux/Cplusplus/07_C++_%E5%BC%82%E5%B8%B8/" rel="bookmark" title="07_C++_异常">07_C++_异常</a></li><li><a href="/ComputerScience/Linux/Cplusplus/08_C++_STL/" rel="bookmark" title="08_C++_STL">08_C++_STL</a></li><li><a href="/ComputerScience/%E6%80%BB%E6%A6%82/" rel="bookmark" title="我的数学相关知识总概">我的数学相关知识总概</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="方聪" data-src="/images/avatar.jpg"><p class="name" itemprop="name">方聪</p><div class="description" itemprop="description">记录生活 铭记感动 立足当下 创造未来</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">89</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">22</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZjY29jb3M=" title="https:&#x2F;&#x2F;github.com&#x2F;fccocos"><i class="ic i-github"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9zaS1qaS1saS00" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;si-ji-li-4"><i class="ic i-zhihu"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE4NjA4NzIwNzE=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1860872071"><i class="ic i-cloud-music"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20vdS81NDQ2Mjk0NDgw" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5446294480"><i class="ic i-weibo"></i></span> <span class="exturl item email" data-url="bWFpbHRvOmd1bmZpcmVmYzcwQDE2My5jb20=" title="mailto:gunfirefc70@163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/ComputerScience/Linux/Cplusplus/06_C++_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" title="5_C_预处理">5_C_预处理</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/CUnit%E7%9A%84%E4%BA%86%E8%A7%A3/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Cplusplus/01_C++_%E6%A6%82%E8%BF%B0/" title="01_C++_概述">01_C++_概述</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/C51%E5%8D%95%E7%89%87%E6%9C%BA/03_51%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84GPIO/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/Politics/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%B5%8B%E8%AF%95/" title="思维导图测试">思维导图测试</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vscode%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Math/" title="分类于 数学">数学</a></div><span><a href="/Math/%E6%80%BB%E6%A6%82/" title="我的数学相关知识总概">我的数学相关知识总概</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/1_C_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="1_C_基本概念">1_C_基本概念</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/English/" title="分类于 英语">英语</a></div><span><a href="/English/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E6%A8%A1%E6%9D%BF%E8%83%8C%E8%AF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/" title="考研英语作文模板背诵与应用">考研英语作文模板背诵与应用</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E6%8F%92%E4%BB%B6/" title="未命名">未命名</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2023</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">方聪 @ Gunfire</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">452k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">6:51</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"ComputerScience/Linux/Cplusplus/05_C++_模板/",favicon:{show:"（●´3｀●）非常非常好!!!",hide:"(´Д｀)炸裂了啊!!!"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:{placeholder:"1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"},fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({log:!1,pluginJsPath:"lib/",pluginModelPath:"assets/",pluginRootPath:"live2dw/",tagMode:!1})</script></body></html>

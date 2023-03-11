@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="方聪的博客" href="http://yoursite.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="方聪的博客" href="http://yoursite.com/atom.xml"><link rel="alternate" type="application/json" title="方聪的博客" href="http://yoursite.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7C3.5:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="笔记,嵌入式,C++语言"><link rel="canonical" href="http://yoursite.com/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/"><title>03_C++_对 C 的扩展 - 计算机科学 | Gunfire = 方聪的博客 = 个人的博客</title><meta name="generator" content="Hexo 5.4.2"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">03_C++_对 C 的扩展</h1><div class="meta"><span class="item" title="创建时间：2022-04-17 08:00:00"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2022-04-17T08:00:00+08:00">2022-04-17</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>9.7k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>9 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Gunfire</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/ComputerScience/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://yoursite.com/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="方聪"><meta itemprop="description" content="个人的博客, 记录生活 铭记感动 立足当下 创造未来"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="方聪的博客"></span><div class="body md" itemprop="articleBody"><h1 id="第三章-c对c的扩展"><a class="anchor" href="#第三章-c对c的扩展">#</a> 第三章 C++ 对 C 的扩展</h1><h2 id="作用域运算符"><a class="anchor" href="#作用域运算符">#</a> <code>::</code> 作用域运算符</h2><p><code>::</code> 作用域运算符是一个作用域，如果 <code>::</code> 之前没有加东西，表示全局作用域</p><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int a = 100;//定义一个全局变量
+void test01()
+&#123;
+    int a=10;//全局变量
+    cout&lt;&lt;a&lt;&lt;endl;//根据向上就近原则，打印 10
+    cout&lt;&lt;::a&lt;&lt;endl;//&quot;::&quot;之前没有加任何东西，表示为全局作用域
+    	            //因此会打印 100
+&#125;
+</code></pre><h2 id="名字控制"><a class="anchor" href="#名字控制">#</a> 名字控制</h2><p>C++ 允许我们对名字的产生和名字的可见性进行控制</p><p>在 C++ 中将通过一种通过命名空间来控制名字的访问</p><h3 id="c命名空间namespace"><a class="anchor" href="#c命名空间namespace">#</a> C++ 命名空间 (namespace)</h3><p>标准 C++ 引入关键字 <code>namespace</code> 可以更好地控制标识符的作用域，最大程度地避免命名冲突。</p><p><code>namespace</code> 的本质就是一个作用域</p><h3 id="c命名空间的使用"><a class="anchor" href="#c命名空间的使用">#</a> c++ 命名空间的使用</h3><ol><li>命名空间的定义 ，必须定义在全局范围</li><li>命名空间中可以存放 变量、类、 结构体、 函数、 类等</li><li>命名空间可以重名，重名的命名空间相当于做合并操作</li><li>命名空间可以嵌套</li><li>在命名空间中声明的函数，在命名空间外定义时，需要添加命名空间和作用域运算符</li><li>无名命名空间中的标识符只能够在本文本内访问，相当于给这些在无名空间中的标识符加上了 static，使得其可以作为内部链接</li><li>命名空间取别名 <code>namespace newname = oldname;</code></li></ol><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+//只能在全局区定义命名空间
+namespace A
+&#123;
+    int a=10;
+&#125;
+namespace B
+&#123;
+    //命名空间中可以存放 变量、类、 结构体、 函数、 类等
+    int a=20;
+    int b=20;
+    void fun()&#123;cout&lt;&lt;&quot;this is namespace B&quot;&lt;&lt;endl;&#125;
+    struct std&#123;&#125;;
+    class s&#123;&#125;;
+    //命名空间可以嵌套
+    namespace C
+    &#123;
+        int a = 100;
+    &#125;
+&#125;
+//命名空间可以重名，重名的命名空间相当于做合并操作
+namespace A
+&#123;
+    int a=20;
+    int b=30;
+    int c=40;
+&#125;
+void test01()
+&#123;
+    cout&lt;&lt;&quot;A::a = &quot;&lt;&lt;A::a&lt;&lt;endl;// 20
+    cout&lt;&lt;&quot;B::a = &quot;&lt;&lt;B::a&lt;&lt;endl;// 20 
+    cout&lt;&lt;&quot;B::b = &quot;&lt;&lt;B::b&lt;&lt;endl;// 20；
+    cout&lt;&lt;&quot;B::C::a = &quot;&lt;&lt;B::C::a&lt;&lt;endl;// 100
+    B::fun();//打印 &quot;this is namespace B&quot;
+&#125;
+int main()
+&#123;
+    
+&#125;
+</code></pre><h3 id="using的声明"><a class="anchor" href="#using的声明">#</a> using 的声明</h3><p>using 可以使得指定命名空间的标识符可用</p><p>注意：当 using 声明的标识符和其他标识符有作用域的冲突时，会产生二义性</p><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+namespace nameA
+&#123;
+    itn a = 10;
+    void foo()
+    &#123;
+        cout&lt;&lt;&quot;hello using&quot;&lt;&lt;endl;
+    &#125;
+&#125;
+
+void test01()
+&#123;
+    cout &lt;&lt; nameA::a&lt;&lt;endl;
+ using nameA::a;
+    cout&lt;&lt;a&lt;&lt;endl;
+ using nameA::foo;
+    foo();
+&#125;
+int main()
+&#123;
+    
+&#125;
+</code></pre><h3 id="using的编译指令"><a class="anchor" href="#using的编译指令">#</a> using 的编译指令</h3><p>using 的编译指令使整个命名空间可用</p><p>使用 using 的编译指令的标识符与其他的同名标识符不会产生二义性，它会遵循就近原则</p><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+namespace nameA
+&#123;
+    int a =100;
+    void fun()&#123;cout &lt;&lt; &quot;hello using&quot; &lt;&lt;endl; &#125;
+&#125;
+
+void test()
+&#123;
+    //using的编译指令使整个命名空间可用
+    using namespace nameA;
+    cout&lt;&lt;&quot;nameA::a = &quot;&lt;&lt;a&lt;&lt;endl;
+    //使用using的编译指令的标识符与其他的同名标识符不会产生二义性，它会遵循就近原则
+    int a = 1000;
+    cout &lt;&lt;&quot;a = &quot;&lt;&lt;a&lt;&lt;endl;
+&#125;
+</code></pre><h3 id="命名空间的使用注意事项"><a class="anchor" href="#命名空间的使用注意事项">#</a> 命名空间的使用注意事项</h3><p>当标识符之间有二义性（冲突）的时候，直接使用 <code>命名空将+::+标识符</code></p><h2 id="c中全局变量检查"><a class="anchor" href="#c中全局变量检查">#</a> c++ 中全局变量检查</h2><p>C++ 的编译器对于全局变量的声明和定义有严格的区分，检测会增强，而 C 语言下的全局变量的声明和定义没有区分</p><p>C 语言下的全局变量的声明和定义</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// 全局变量</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">int</span> a<span class="token punctuation">;</span><span class="token comment">// 定义</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> a<span class="token punctuation">;</span><span class="token comment">// 声明</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> a<span class="token punctuation">;</span><span class="token comment">// 声明</span></pre></td></tr></table></figure><p>C++ 语言中的全局变量的声明和定义</p><pre><code class="language-c++">//全局变量
+int a;
+extern int a;
+extern int a;
+</code></pre><p>C++ 语言下的全局变量的声明和定义，如果写成以下形式，编译器百编译不会通过</p><pre><code class="language-c++">//全局变量
+int a;
+int a;
+int a;
+</code></pre><h2 id="c所有的变量和函数都必须有类型"><a class="anchor" href="#c所有的变量和函数都必须有类型">#</a> C++ 所有的变量和函数都必须有类型</h2><p>C++ 中形参必须有类型，返回值和形参个数会做检测</p><p>C 语言中的函数的形参可以不写，没有返回值可以返回值，实参的个数不会检测</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">void</span> <span class="token function">fun</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token number">100</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token comment">//c 语言中合法的</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token comment">// 合法</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token function">fun</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token function">fun</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token function">fun</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      </pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>C++ 语言中函数的形参类型必须写，没有返回值不可以返回，实参的个数做检查</p><pre><code class="language-c++">void fun(x,y)//编译器报错，形参没有类型
+&#123;
+    return 100;//编译器报错，没有返回值，但是返回了
+&#125;
+int main()
+&#123;
+    fun(1);//实参个数与形参个数不一致
+    fun(1,2);
+    fun(1,2,3); //实参个数与形参个数不一致
+&#125;
+</code></pre><h2 id="c有更严格的类型转换"><a class="anchor" href="#c有更严格的类型转换">#</a> c++ 有更严格的类型转换</h2><p>在 C++ 中，不同类型的变量一般是不能直接赋值的，需要相应的强转</p><p>在 C 语言中</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token keyword">char</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token comment">// 编译通过</span></pre></td></tr></table></figure><p>在 C++ 语言中</p><pre><code class="language-c++">void test()&#123;char *p = malloc(100);&#125;//在c++中编译不通过，需要进行强制转换
+//void test()&#123;char *p=(char*)malloc(100);&#125;
+</code></pre><h2 id="c对struct类型增强"><a class="anchor" href="#c对struct类型增强">#</a> C++ 对 struct 类型增强</h2><p>在 C++ 中使用结构体类型定义变量时，可以不写 struct 关键字</p><p>在 C 语言中：</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">stu</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">int</span> a<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">stu</span> xiaoming<span class="token punctuation">;</span></pre></td></tr></table></figure><p>在 C++ 中</p><pre><code class="language-c++">struct stu&#123;
+    int a;
+&#125;;
+stu xiaoming ;
+</code></pre><h2 id="c中新增bool类型"><a class="anchor" href="#c中新增bool类型">#</a> C++ 中新增 bool 类型</h2><p>在 C 语言中，以下代码需要包含 <code>stdbool.h</code> 头文件，但是在 C++ 中可以直接使用 bool 类型</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> bool flag <span class="token operator">=</span> true<span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="c三目运算符增强"><a class="anchor" href="#c三目运算符增强">#</a> C++ 三目运算符增强</h2><p>在 C++ 中三目运算符返回的是一个变量，在 C 语言中三目运算符返回的是一个常量</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token punctuation">(</span>a<span class="token operator">&lt;</span>b<span class="token operator">?</span>a<span class="token operator">:</span>b<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">100</span><span class="token comment">// 在 C 语言中是不合法的，在 C++ 是合法的。</span></pre></td></tr></table></figure><h2 id="cc中的const"><a class="anchor" href="#cc中的const">#</a> C/C++ 中的 <code>const</code></h2><h3 id="const概述"><a class="anchor" href="#const概述">#</a> <code>const</code> 概述</h3><p><code>const</code> 单词字面意思为常数，不变的。它是 C/C++ 中的一个关键字，是一个限定符，它用来限定一个变量不允许改变，他将一个对象转换成一个常量</p><h3 id="c中的const"><a class="anchor" href="#c中的const">#</a> C 中的 <code>const</code></h3><p>在 C 语言中 <code>const</code> 修饰的变量应该是一个只读变量，既然是变量就应该给 <code>const</code> 修饰的变量分配内存，并且在 C 中 <code>const</code> 是一个全局只读变量，C 语言中 <code>const</code> 修饰的只读变量是外部连接的。</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> <span class="token keyword">int</span> arrSize <span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">int</span> arr<span class="token punctuation">[</span>arrSize<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>以上代码看似合理，但是这里有一个致命的错误。因为 <code>arrSize</code> 在 C 语言中是一个变量，是变量就得占用某一块内存，所以 C 编译器不知道在编译的时候其值是多少</p><p>在 C 语言中，</p><p><code>const</code> 修饰的局部变量存放在栈区，虽然不可以直接通变量名去修改该变量的值，但是可以通过指针来修改该变量的值；</p><p><code>const</code> 修饰的全局变量存放在常量区，不可以修改该全局变量的值（通过指针也不行）；</p><p><code>const</code> 修饰的全局变量，如果外部文件想用，可直接用关键字 <code>extern</code> 将其声明为外部可用变量。</p><h3 id="c中的const-2"><a class="anchor" href="#c中的const-2">#</a> C++ 中的 <code>const</code></h3><ol><li><code>const</code> 修饰的局部变量赋值常量时，局部变量保存在<strong>符号表</strong>中，是一个常量，不可修改</li><li><code>const</code> 修饰的全局变量保存在常量区，不可以修改</li><li><code>const</code> 修饰的全局变量默认是内部链接属性，只能被本文本使用，如果想要其他文本使用该全局变量，就必须把该变量的内部链接属性改为外部连接属性，即在变量前面加 extern 关键字进行修饰</li></ol><pre><code class="language-c++">//const修饰的全局变量默认是内部链接属性，只能被本文本使用
+/*情况一*/const int num = 100;//此全局变量在另一个文件当中
+//如果想要其他文本使用该全局变量，就必须把该变量的内部链接属性改为外部连接属性，即在变量前面加extern关键字进行修饰
+/*情况二*/extern int num =100;
+</code></pre><pre><code class="language-c++">#include &lt;isotream&gt;
+using namespace std;
+const int b = 1;
+void test03()
+&#123;
+    extern const int num;//情况一会报错，情况二编译通过
+&#125;
+
+void test02()
+&#123;
+    //const修饰的全局变量存在于常量区
+    int *p = (int*)&amp;b;
+    *p=100;//错误的
+    
+&#125;
+//c++中const修饰的局部变量
+void test01()
+&#123;
+    //在c++中const修饰的局部变量存在符号表中
+    const int a = 100;
+    int *p  = &amp;a; //报错，类型不匹配 int* const int* 不匹配
+    int *p = (int*)&amp;a;//对const修饰的局部变量取地址 编译器会产生一个临时变量来保存a的地址 int temp = a; int *p =&amp;tmp;
+    *p = 100;
+&#125;
+</code></pre><h3 id="c和c中的const的异同"><a class="anchor" href="#c和c中的const的异同">#</a> C 和 C++ 中的 <code>const</code> 的异同</h3><p><strong>相同点</strong>：</p><p>C 和 C++ 中的 <code>const</code> 修饰的局部变量都是保存在常量区，不能修改</p><p><strong>不同点</strong>：</p><p>C 语言中 <code>const</code> 修饰的局部变量赋值为常量，局部变量保存在栈区，可以被指针修改</p><p>C++ 中， <code>const</code> 修饰的局部变量赋值为常量时，局部变量保存在符号表中，不能被修改</p><p>C 语言中 <code>const</code> 修饰的全局变量默认时外部连接属性</p><p>C++ 中从上图修饰的局部变量默认是内部来链接属性</p><h3 id="c中const修饰的变量分配内存的情况"><a class="anchor" href="#c中const修饰的变量分配内存的情况">#</a> C++ 中 <code>const</code> 修饰的变量分配内存的情况</h3><ol><li><code>const</code> 修饰的全局变量在常量区分配了内存</li><li><code>const</code> 修饰的局部变量赋值为常量时，没有分配内存，存在于符号表当中</li><li>对 <code>const</code> 修饰的局部变量为常量的变量取地址 会分配一个临时的空间 <code>int tmp = a; *p = &amp;tmp;</code></li><li><code>const</code> 修饰的局部变量赋值为变量时，局部变量存在栈区，可以通过指针来修改该变量的值</li><li><code>const</code> 修饰的局部变量为自定义的变量存放在栈区。</li></ol><h2 id="引用"><a class="anchor" href="#引用">#</a> 引用</h2><h3 id="引用的基本用法"><a class="anchor" href="#引用的基本用法">#</a> 引用的基本用法</h3><p>引用的本质就是取别名</p><p><code>原类型名 &amp;别名 = 旧名</code></p><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+void test01()
+&#123;
+    int a=10;
+    //引用一旦初始化之后不能改变引用的标识
+    int &amp;b = a;
+    b = 100;
+    cout &lt;&lt;&quot;a = &quot;&lt;&lt;a&lt;&lt;endl;
+    cout&lt;&lt;&quot;b = &quot;&lt;&lt; b &lt;&lt;endl;
+    int c = 1;
+    b = c;//代表把c的值赋给b，不是取别名
+&#125;
+//给数组取别名
+void test02()
+&#123;
+    int a[5]=&#123;1,2,3,4,5&#125;
+    int (&amp;arr)[5] = a;
+    for(int i = 0; i &lt; 5; ++i)
+        cout&lt;&lt;&quot;arr[&quot;&lt;&lt;i&lt;&lt;&quot;] = &quot;&lt;&lt;arr[i]&lt;&lt;endl;
+&#125;
+
+int main()
+&#123;
+    
+&#125;
+</code></pre><p><strong>注意事项:</strong></p><ol><li>&amp; 在引用中不是取地址符，而是起标识作用，标识当前变量是一个引用</li><li>类型标识符是指目标变量的类型</li><li>必须在声明引用变量时进行初始化</li><li>引用初始化之后不能改变</li><li>不能有 NULL 的引用。必须确保引用是和一块合法的存储单元关联。</li><li>可以建立对数组的引用</li></ol><p><strong>给数组取别名</strong></p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">;</span></pre></td></tr></table></figure><h3 id="函数中的引用"><a class="anchor" href="#函数中的引用">#</a> 函数中的引用</h3><ol><li>引用可以作为函数的形参</li><li>不能返回局部变量的引用</li></ol><pre><code class="language-c++">void swap(int *x, int *y)
+&#123;
+    int tmp = *x;
+    *x = *y;
+    *y = tmp;
+&#125;
+void swap_ref(int &amp;x, int &amp;y)
+&#123;
+    int tmp = x;
+    x = y;
+    y = tmp;
+&#125;
+void test01()
+&#123;
+    int a = 10;
+    int b = 20;
+    swap(&amp;a, &amp;b);
+    cout &lt;&lt; &quot;a=&quot;&lt;&lt;a&lt;&lt;&quot; b=&quot;&lt;&lt;b&lt;&lt;endl;
+&#125;
+void test01_ref()
+&#123;
+    int a = 10;
+    int b = 20;
+    swap_ref(a, b);
+    cout &lt;&lt; &quot;a=&quot;&lt;&lt;a&lt;&lt;&quot; b=&quot;&lt;&lt;b&lt;&lt;endl;
+&#125;
+
+void get_mem(int **q)
+&#123;
+    *q = (int*)malloc(10*sizeof(int));
+&#125;
+void get_mem_ref(int* &amp;q)
+&#123;
+    q = (int*)malloc(10*sizeof(int));
+&#125;
+void test03()
+&#123;
+    int *p = NULL;
+    get_mem(&amp;p);
+    get_mem_ref(p);
+&#125;
+int &amp;test04()
+&#123;
+    //能不能返回一个变量的引用 看这个变量的空间是否被释放了
+    static int b = 100;
+    int a = 10;
+    //return a;//err 不能返回局部变量的引用
+    return b;//可以返回静态变量的引用
+&#125;
+
+</code></pre><h3 id="引用的本质-指针常量"><a class="anchor" href="#引用的本质-指针常量">#</a> 引用的本质 -- 指针常量</h3><p>引用的本质在 C++ 内部实现是一个指针常量，指针常量不能改变指针变量的指向，但能够修改指针指向的内容。</p><p><code>Type &amp;ref = val</code> 等价于 <code>Type* const ref = &amp;val</code></p><pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+void test01()
+&#123;
+    int a = 0;
+    int &amp;b = a;//编译优化  int* const b = &amp;a
+    //指针常量不能改变指针变量的指向
+    
+&#125;
+
+void fun(int* &amp;q)//编译优化 int* &amp;q ==&gt;int* const  q = &amp;q;
+void test02()
+&#123;
+    int *p = NULL;
+    func(p);
+&#125;
+</code></pre><h3 id="指针的引用"><a class="anchor" href="#指针的引用">#</a> 指针的引用</h3><p><code>type * &amp;q = p</code> 等价于 <code>type * * const q = &amp;q</code></p><p>const int * q // 常指针，该指针指向的内容不可修改，即只读</p><h3 id="常量引用"><a class="anchor" href="#常量引用">#</a> 常量引用</h3><p><code>const type &amp; ref = val</code></p><p>注意：字面量不能赋值给引用，但可以赋值给 const 引用，const 修饰的引用不能修改。</p><p>const 修饰的引用的时引用 &amp; 不能通过引用去修改引用的这块空间的内容</p><p><code>const int &amp;a = 1//是合法的</code></p><h2 id="内联函数"><a class="anchor" href="#内联函数">#</a> 内联函数</h2><h3 id="内联函数的引出"><a class="anchor" href="#内联函数的引出">#</a> 内联函数的引出</h3><p>内联函数为了继承宏函数的效率，没有函数调用时的开销，然后又可以像普通函数那样，可以直接进行参数，返回值类型的安全检查，又可以作为成员函数</p><h3 id="预处理宏的缺陷"><a class="anchor" href="#预处理宏的缺陷">#</a> 预处理宏的缺陷</h3><p>预处理器宏存在问题的关键时我们可能认为预处理器的行为和编译器的行为一样的。当然也是由于宏函数调用和函数调用在外表看起来是一样的，因此也容易被混淆，但是其中也有一些微妙的问题出现</p><p>宏函数的替换是发生在预处理阶段</p><p>内联函数的替换发生在编译阶段</p><p>宏函数容易出错，内联函数不容易出错</p><p>内联函数和宏函数一样，都省去了函数调用的开销</p><h3 id="内联函数的概念"><a class="anchor" href="#内联函数的概念">#</a> 内联函数的概念</h3><p>在普通函数（非成员函数）前面加上关键字 <code>inline</code> 使该函数成为了内联函数，但是必须注意的是函数体和声明必须结合在一起，否则编译将它作为普通函数来对待。</p><p><code>inline void func(int a);</code></p><p>上述写法没有任何效果，仅仅是声明函数，应该如下方式来做</p><p><code>inline int func(int a) &#123;return ++a;&#125;</code></p><p>注意：编译器会检查函数的参数列表和返回值。这些事情预处理器无法实现。内联函数的确占用空间，但是内联函数相对于普通函数来说的优势在于省去了函数调用时的压栈、跳转、返回的开销，即用空间换时间</p><h3 id="类内部的内联函数"><a class="anchor" href="#类内部的内联函数">#</a> 类内部的内联函数</h3><p>类内部的成员函数编译器默认编译成内联函数</p><h3 id="内联函数和编译器"><a class="anchor" href="#内联函数和编译器">#</a> 内联函数和编译器</h3><p>对于任何类型的函数，编译器会将函数类型（包括函数名字，参数类型，返回值类型）放入到符号表中。</p><p>同样，但编译器看到内联函数的时候，并且对内联函数进行分析没有发现错误时，也会将内联函数放到符号表。</p><p>当调用一个内联函数的时候，编译器首先确保传入参数类型时正确匹配的，或者如果类型不完全匹配，但是可以将其转换为正确类型，并且返回值在目标表达式里匹配正确类型，或者可以转换为目标类型，内联函数就会直接替换函数调用，这就消除了函数调用的开销。</p><p>假如内联函数是成员函数，对象 this 指针也会被放入合适的位置。</p><p>类型检查和类型转换、包括在合适位置放入对象 this 指针等这些操作预处理器是不能完成的。</p><p>但是 C++ 内联编译会有一些限制，以下情况编译器可能考虑不会将函数进行内联编译：</p><ol><li>不能存在任何形式的循环语句</li><li>不能存在过多的条件判断语句</li><li>函数体不能过于庞大</li><li>不能对函数进行取地址操作</li></ol><p>内联仅仅只是给编译器一种建议，编译器不一定会接受这种建议，如果没有将函数声明为内联函数，那么编译器也可能将此函数内联编译，一个好的编译器会将内联小的、简单的函数。</p><h2 id="c的默认参数"><a class="anchor" href="#c的默认参数">#</a> C++ 的默认参数</h2><p>C++ 在声明函数原型的时候可为一个或多个参数指定默认（缺省）的参数值，当函数调用的时候如果没有指定值，编译器会自动用默认值替换</p><p>设置默认参数的时候，如果只有一个参数设置了默认参数，则后面的所有的参数都要设置默认参数</p><p>默认参数在设置时，只能在函数声明和函数定义中的任意一处设置默认参数</p><h2 id="c函数中的占位参数"><a class="anchor" href="#c函数中的占位参数">#</a> C++ 函数中的占位参数</h2><p>C++ 在声明函数时，可以设置占位参数。占位参数只有参数类型声明，而没有参数名声明，在函数体内部无法使用占位参数。</p><p>操作符重载的后置 ++ 就会用到占位参数。</p><pre><code class="language-c++">void TestFun01(int a,int b, int)
+&#123;
+    //函数内部无法使用占位参数
+    cout &lt;&lt; &quot;a + b = &quot; &lt;&lt;a+b&lt;&lt;endl;
+&#125;
+//占位参数可以设置默认值
+void TestFun02(int a, int b, int =20)
+&#123;
+    //函数内部依然无法使用占位参数
+    cout &lt;&lt; &quot;a + b = &quot; &lt;&lt;a+b&lt;&lt;endl;
+&#125;
+
+int main()
+&#123;
+    //错误调用，占位参数必须传参
+    //TestFun01(10,20);
+    
+    //正确调用
+    TestFun01(10,20,30);
+    TestFun02(10,20);
+    TestFun02(10,20,30);
+&#125;
+</code></pre><h2 id="c的函数重载"><a class="anchor" href="#c的函数重载">#</a> C++ 的函数重载</h2><h3 id="函数重载概述"><a class="anchor" href="#函数重载概述">#</a> 函数重载概述</h3><p>函数名相同，函数参数类型或函数参数个数不同的两个以上的函数，称为函数重载</p><h3 id="函数重载基本语法"><a class="anchor" href="#函数重载基本语法">#</a> 函数重载基本语法</h3><p>实现函数重载的条件：</p><ol><li>同一个作用域</li><li>参数个数不同</li><li>参数类型不同</li><li>参数顺序不同</li><li>返回值不能作为函数的重载条件</li><li>引用、默认参数作为函数重载的条件需要注意二义性</li></ol><pre><code class="language-c++">//1. 函数重载的条件
+namespace A&#123;
+    void MyFunc()&#123;cout&lt;&lt;&quot;无参数&quot;&lt;&lt;endl;&#125;
+    void MyFunc(int a)&#123;cout&lt;&lt;&quot;a = &quot;&lt;&lt;a&lt;&lt;endl;&#125;
+    void MyFunc(string b)&#123;cout &lt;&lt; &quot;b=&quot;&lt;&lt;endl;&#125;
+    void MyFunc(int a, string b)&#123;cout&lt;&lt;&quot;a=&quot;&lt;&lt;a&lt;&lt;&quot; b=&quot;&lt;&lt;b&lt;&lt;endl;&#125; 
+    void MyFunc(string b, int a)&#123;cout&lt;&lt;&quot;b=&quot;&lt;&lt;b&lt;&lt;&quot; a=&quot;&lt;&lt;a&lt;&lt;endl;&#125;
+&#125;
+</code></pre><h3 id="函数重载的本质"><a class="anchor" href="#函数重载的本质">#</a> 函数重载的本质</h3><p>编译器为了实现函数重载，也是默认为我们做了一些幕后的工作，编译器用不同的参数类型来修饰不同的函数名，比如 <code>void func()</code> 编译器可能会将函数名修饰成 <code>func</code> ；当编译器碰到 <code>void func(int x)</code> ，编译器可能将函数名修饰为 <code>funcint</code> ；当编译器碰到 <code>void func(int x, char c)</code> ，编译器可能将函数名修饰为 <code>funcintchar</code> ；使用 &quot;可能&quot; 这个字眼是因为便起义如何修饰重载函数名称并没有一个统一的标准，所以不同的编译器可能产生不同的内部名。</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">char</span> c<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>以上三个函数在 linux 下编译之后的函数名为:</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre>_Z4funcv<span class="token comment">//v 表示 void, 无参数</span></pre></td></tr><tr><td data-num="2"></td><td><pre>_Z4funci<span class="token comment">//i 表示参数为 int 类型</span></pre></td></tr><tr><td data-num="3"></td><td><pre>_Z4funcic<span class="token comment">//i 标识第一个参数为 int 类型，第二个参数为 char 类型</span></pre></td></tr></table></figure><h2 id="extern-c浅析"><a class="anchor" href="#extern-c浅析">#</a> extern &quot;C&quot; 浅析</h2><p>由于 C 和 C<ins> 的编译器在编译函数后，生成的函数名是不同的，这是 C</ins> 种调用一个 C 语言编写的函数，那么 C<ins> 就会根据 C</ins> 的名称修饰方式查找并链接该函数，此时会发生链接错误，因此为了是实现 C<ins> 代码能够调用 C 编写的代码，就出现了 <code>extern &quot;C&quot;</code> 。加上 <code>extern &quot;C&quot;</code> 后，这部分代码编译器按照 C 语言的方式进行编译和链接，而不是按 C</ins> 的方式。</p><p>方法一：</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">extern</span> <span class="token string">"C"</span> <span class="token keyword">int</span> <span class="token function">MyFunc</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>方法二：</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">if</span> <span class="token expression">_cplusplus</span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">extern</span> <span class="token string">"C"</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">int</span> <span class="token function">MyFunc</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">if</span> <span class="token expression">_cplusplus</span></span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span></pre></td></tr></table></figure><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css"><div class="tags"><a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> 笔记</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"><i class="ic i-tag"></i> 嵌入式</a> <a href="/tags/C-%E8%AF%AD%E8%A8%80/" rel="tag"><i class="ic i-tag"></i> C++语言</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-03-11 17:49:19" itemprop="dateModified" datetime="2023-03-11T17:49:19+08:00">2023-03-11</time> </span><span id="ComputerScience/Linux/Cplusplus/03_C++_对C的扩展/" class="item leancloud_visitors" data-flag-title="03_C++_对 C 的扩展" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="方聪 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="方聪 支付宝"><p>支付宝</p></div><div><img data-src="/images/paypal.png" alt="方聪 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>方聪 <i class="ic i-at"><em>@</em></i>方聪的博客</li><li class="link"><strong>本文链接：</strong> <a href="http://yoursite.com/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/" title="03_C++_对 C 的扩展">http://yoursite.com/ComputerScience/Linux/Cplusplus/03_C++_对C的扩展/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/ComputerScience/Linux/Cplusplus/02_C++_%E5%88%9D%E5%A7%8B/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli9lfebj20zk0m84qp.jpg" title="02_C++_初始"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机科学</span><h3>02_C++_初始</h3></a></div><div class="item right"><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyhsblkj20zk0m81kx.jpg" title="04_C++_类和对象"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机科学</span><h3>04_C++_类和对象</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-c%E5%AF%B9c%E7%9A%84%E6%89%A9%E5%B1%95"><span class="toc-number">1.</span> <span class="toc-text">第三章 C++ 对 C 的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.1.</span> <span class="toc-text">:: 作用域运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E5%AD%97%E6%8E%A7%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">名字控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4namespace"><span class="toc-number">1.2.1.</span> <span class="toc-text">C++ 命名空间 (namespace)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">c++ 命名空间的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">1.2.3.</span> <span class="toc-text">using 的声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using%E7%9A%84%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.4.</span> <span class="toc-text">using 的编译指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.5.</span> <span class="toc-text">命名空间的使用注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E4%B8%AD%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%A3%80%E6%9F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">c++ 中全局变量检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E6%89%80%E6%9C%89%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E9%83%BD%E5%BF%85%E9%A1%BB%E6%9C%89%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">C++ 所有的变量和函数都必须有类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E6%9C%89%E6%9B%B4%E4%B8%A5%E6%A0%BC%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.5.</span> <span class="toc-text">c++ 有更严格的类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E5%AF%B9struct%E7%B1%BB%E5%9E%8B%E5%A2%9E%E5%BC%BA"><span class="toc-number">1.6.</span> <span class="toc-text">C++ 对 struct 类型增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E4%B8%AD%E6%96%B0%E5%A2%9Ebool%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.7.</span> <span class="toc-text">C++ 中新增 bool 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6%E5%A2%9E%E5%BC%BA"><span class="toc-number">1.8.</span> <span class="toc-text">C++ 三目运算符增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cc%E4%B8%AD%E7%9A%84const"><span class="toc-number">1.9.</span> <span class="toc-text">C&#x2F;C++ 中的 const</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#const%E6%A6%82%E8%BF%B0"><span class="toc-number">1.9.1.</span> <span class="toc-text">const 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84const"><span class="toc-number">1.9.2.</span> <span class="toc-text">C 中的 const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84const-2"><span class="toc-number">1.9.3.</span> <span class="toc-text">C++ 中的 const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E5%92%8Cc%E4%B8%AD%E7%9A%84const%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">1.9.4.</span> <span class="toc-text">C 和 C++ 中的 const 的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E4%B8%ADconst%E4%BF%AE%E9%A5%B0%E7%9A%84%E5%8F%98%E9%87%8F%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.9.5.</span> <span class="toc-text">C++ 中 const 修饰的变量分配内存的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">1.10.</span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">1.10.1.</span> <span class="toc-text">引用的基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-number">1.10.2.</span> <span class="toc-text">函数中的引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%AC%E8%B4%A8-%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F"><span class="toc-number">1.10.3.</span> <span class="toc-text">引用的本质 -- 指针常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-number">1.10.4.</span> <span class="toc-text">指针的引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8"><span class="toc-number">1.10.5.</span> <span class="toc-text">常量引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="toc-number">1.11.</span> <span class="toc-text">内联函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%BC%95%E5%87%BA"><span class="toc-number">1.11.1.</span> <span class="toc-text">内联函数的引出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E5%AE%8F%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-number">1.11.2.</span> <span class="toc-text">预处理宏的缺陷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.11.3.</span> <span class="toc-text">内联函数的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%86%85%E9%83%A8%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="toc-number">1.11.4.</span> <span class="toc-text">类内部的内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E5%92%8C%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">1.11.5.</span> <span class="toc-text">内联函数和编译器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%9A%84%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-number">1.12.</span> <span class="toc-text">C++ 的默认参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8D%A0%E4%BD%8D%E5%8F%82%E6%95%B0"><span class="toc-number">1.13.</span> <span class="toc-text">C++ 函数中的占位参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%9A%84%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="toc-number">1.14.</span> <span class="toc-text">C++ 的函数重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%A6%82%E8%BF%B0"><span class="toc-number">1.14.1.</span> <span class="toc-text">函数重载概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.14.2.</span> <span class="toc-text">函数重载基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.14.3.</span> <span class="toc-text">函数重载的本质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extern-c%E6%B5%85%E6%9E%90"><span class="toc-number">1.15.</span> <span class="toc-text">extern &quot;C&quot; 浅析</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/Politics/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%B5%8B%E8%AF%95/" rel="bookmark" title="思维导图测试">思维导图测试</a></li><li><a href="/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" rel="bookmark" title="考研数据结构算法">考研数据结构算法</a></li><li><a href="/ComputerScience/Linux/Clanguage/1_C_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="bookmark" title="1_C_基本概念">1_C_基本概念</a></li><li><a href="/ComputerScience/Linux/Clanguage/2_C_%E6%95%B0%E7%BB%84/" rel="bookmark" title="2_C_数组">2_C_数组</a></li><li><a href="/ComputerScience/Linux/Clanguage/3_C_%E5%87%BD%E6%95%B0/" rel="bookmark" title="3_C_函数">3_C_函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/4_C_%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB/" rel="bookmark" title="4_C_变量的存储类别">4_C_变量的存储类别</a></li><li><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" rel="bookmark" title="5_C_预处理">5_C_预处理</a></li><li><a href="/ComputerScience/Linux/Clanguage/6_C_%E6%8C%87%E9%92%88/" rel="bookmark" title="6_C_指针">6_C_指针</a></li><li><a href="/ComputerScience/Linux/Clanguage/7_C_%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%94%B3%E8%AF%B7/" rel="bookmark" title="7_C_动态内存申请">7_C_动态内存申请</a></li><li><a href="/ComputerScience/Linux/Clanguage/8_C_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" rel="bookmark" title="8_C_字符串处理函数">8_C_字符串处理函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/9_C_%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E6%9E%9A%E4%B8%BE/" rel="bookmark" title="9_C_结构体、共用体、枚举">9_C_结构体、共用体、枚举</a></li><li><a href="/ComputerScience/Linux/Clanguage/10_C_%E9%93%BE%E8%A1%A8/" rel="bookmark" title="10_C_链表">10_C_链表</a></li><li><a href="/ComputerScience/Linux/Cplusplus/01_C++_%E6%A6%82%E8%BF%B0/" rel="bookmark" title="01_C++_概述">01_C++_概述</a></li><li><a href="/ComputerScience/Linux/Cplusplus/02_C++_%E5%88%9D%E5%A7%8B/" rel="bookmark" title="02_C++_初始">02_C++_初始</a></li><li class="active"><a href="/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/" rel="bookmark" title="03_C++_对C的扩展">03_C++_对C的扩展</a></li><li><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="04_C++_类和对象">04_C++_类和对象</a></li><li><a href="/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="05_C++_模板">05_C++_模板</a></li><li><a href="/ComputerScience/Linux/Cplusplus/06_C++_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="06_C++_类型转换">06_C++_类型转换</a></li><li><a href="/ComputerScience/Linux/Cplusplus/07_C++_%E5%BC%82%E5%B8%B8/" rel="bookmark" title="07_C++_异常">07_C++_异常</a></li><li><a href="/ComputerScience/Linux/Cplusplus/08_C++_STL/" rel="bookmark" title="08_C++_STL">08_C++_STL</a></li><li><a href="/ComputerScience/%E6%80%BB%E6%A6%82/" rel="bookmark" title="我的数学相关知识总概">我的数学相关知识总概</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="方聪" data-src="/images/avatar.jpg"><p class="name" itemprop="name">方聪</p><div class="description" itemprop="description">记录生活 铭记感动 立足当下 创造未来</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">89</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">22</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZjY29jb3M=" title="https:&#x2F;&#x2F;github.com&#x2F;fccocos"><i class="ic i-github"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9zaS1qaS1saS00" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;si-ji-li-4"><i class="ic i-zhihu"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE4NjA4NzIwNzE=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1860872071"><i class="ic i-cloud-music"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20vdS81NDQ2Mjk0NDgw" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5446294480"><i class="ic i-weibo"></i></span> <span class="exturl item email" data-url="bWFpbHRvOmd1bmZpcmVmYzcwQDE2My5jb20=" title="mailto:gunfirefc70@163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/ComputerScience/Linux/Cplusplus/02_C++_%E5%88%9D%E5%A7%8B/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/shell/02_shell_%E8%AF%AD%E6%B3%95/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" title="5_C_预处理">5_C_预处理</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%9D%82%E9%A1%B9/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/C51%E5%8D%95%E7%89%87%E6%9C%BA/IIC%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Cplusplus/07_C++_%E5%BC%82%E5%B8%B8/" title="07_C++_异常">07_C++_异常</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/UML%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Math/" title="分类于 数学">数学</a> <i class="ic i-angle-right"></i> <a href="/categories/Math/AdvancedMathematics/" title="分类于 高等数学">高等数学</a></div><span><a href="/Math/AdvancedMathematics/%E5%90%84%E7%A7%8D%E6%91%86%E7%BA%BF/" title="各种类型的摆线">各种类型的摆线</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/shell/04_shell_%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/Qt/02_%E5%AF%B9%E8%B1%A1%E6%A0%91/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/10_C_%E9%93%BE%E8%A1%A8/" title="10_C_链表">10_C_链表</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2023</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">方聪 @ Gunfire</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">452k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">6:51</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"ComputerScience/Linux/Cplusplus/03_C++_对C的扩展/",favicon:{show:"（●´3｀●）非常非常好!!!",hide:"(´Д｀)炸裂了啊!!!"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:{placeholder:"1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"},fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({log:!1,pluginJsPath:"lib/",pluginModelPath:"assets/",pluginRootPath:"live2dw/",tagMode:!1})</script></body></html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="方聪的博客" href="http://yoursite.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="方聪的博客" href="http://yoursite.com/atom.xml"><link rel="alternate" type="application/json" title="方聪的博客" href="http://yoursite.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7C3.5:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="复习,考研,数据结构"><link rel="canonical" href="http://yoursite.com/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/"><title>考研数据结构算法 - 计算机科学 | Gunfire = 方聪的博客 = 个人的博客</title><meta name="generator" content="Hexo 5.4.2"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">考研数据结构算法</h1><div class="meta"><span class="item" title="创建时间：2021-12-15 10:30:00"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2021-12-15T10:30:00+08:00">2021-12-15</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>15k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>14 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Gunfire</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/ComputerScience/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://yoursite.com/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="方聪"><meta itemprop="description" content="个人的博客, 记录生活 铭记感动 立足当下 创造未来"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="方聪的博客"></span><div class="body md" itemprop="articleBody"><h1 id="线性表"><a class="anchor" href="#线性表">#</a> 线性表</h1><h2 id="链表的基本操作"><a class="anchor" href="#链表的基本操作">#</a> 链表的基本操作</h2><h3 id="头插法"><a class="anchor" href="#头插法">#</a> 头插法</h3><pre><code class="language-c++">s-&gt;next = L-&gt;next;
+L-&gt;next = s;
+</code></pre><h3 id="尾插法"><a class="anchor" href="#尾插法">#</a> 尾插法</h3><pre><code class="language-c++">p-&gt;next =s;
+p=p-&gt;next;
+</code></pre><h3 id="头插法和尾插法的应用"><a class="anchor" href="#头插法和尾插法的应用">#</a> 头插法和尾插法的应用</h3><h4 id="应用一"><a class="anchor" href="#应用一">#</a> 应用一</h4><h5 id="尾插法创建链表"><a class="anchor" href="#尾插法创建链表">#</a> 尾插法创建链表</h5><pre><code class="language-c++">void createlistR(LNode *&amp;L, int a[], int n)
+&#123;
+    LNode *p, *s;
+    int i;
+    L = (LNode*)malloc(sizeof(LNode));
+    p=L;
+    for(i = 0; i &lt; n; ++i)
+    &#123;
+        s = (LNode*)malloc(sizeof(LNode));
+        s-&gt;data = a[i];
+        p-&gt;next = s;
+        p = p-&gt;next;
+    &#125;
+    p-&gt;next = NULL;
+&#125;
+</code></pre><h5 id="头插法创建链表"><a class="anchor" href="#头插法创建链表">#</a> 头插法创建链表</h5><pre><code class="language-c++">void createlistH(LNode *&amp;L, int a[], int n)
+&#123;
+    LNode *s;
+    L = (LNode*)malloc(sizeof(LNode));
+    L-&gt;next = NULL;
+    int i;
+    for(i = 0; i &lt; n; ++i)
+    &#123;
+        s = (LNode*)malloc(sizeof(LNode));
+        s-&gt;data = a[i];
+        s-&gt;next = L-&gt;next;
+        L-&gt;next = s;
+    &#125;
+&#125;
+
+</code></pre><h4 id="应用二"><a class="anchor" href="#应用二">#</a> 应用二</h4><h5 id="用尾插法将两个递增有序的列表合并成一个递增有序的列表"><a class="anchor" href="#用尾插法将两个递增有序的列表合并成一个递增有序的列表">#</a> 用尾插法将两个递增有序的列表合并成一个递增有序的列表</h5><h6 id="不用新增头结点的情况"><a class="anchor" href="#不用新增头结点的情况">#</a> 不用新增头结点的情况</h6><pre><code class="language-c++">void merge(LNode *&amp;A, LNode *B)
+&#123;
+    //定义三个个游标
+    LNode *pa, *pb, *pr,*pre;
+    pa = A-&gt;next;
+    pb = B--&gt;next;
+    pre = B;
+    pr = NULL;
+    free(B);
+    while(pa!==NULL&amp;&amp;pb!=NULL)
+    &#123;
+        if(pa-&gt;data&lt;pb-&gt;data)
+        &#123;
+           pre = pre-&gt;next;
+           pa = pa-&gt;next; 
+        &#125;else&#123;
+            pr=pb;
+            pb = pb-&gt;next;
+            pr-&gt;next=pre-&gt;next;
+            pre-&gt;next=pr;
+            pre=pa;
+            pa = pa-&gt;next;
+        &#125;
+    &#125;
+    if(pb !=NULL) pa-&gt;next = pb; 
+&#125;
+</code></pre><h6 id="新增头结点的情况"><a class="anchor" href="#新增头结点的情况">#</a> 新增头结点的情况</h6><pre><code class="language-c++">void merge(LNode *A, LNode *B, LNode *&amp;C)
+&#123;
+    LNode *pa,*pb,*pc;
+    C = (LNode*)malloc(sizeof(LNode));
+    C=NULL;
+    pc=C;
+    pa = A-&gt;next;
+    pb = B-&gt;next;
+    free(A);
+    free(B);
+    while(pa!=NULL&amp;&amp;pb!=NULL)
+    &#123;
+        if(pa-&gt;data &lt; pb-&gt;data)
+        &#123;
+            pc-&gt;next = pa;
+            pa = pa-&gt;next;
+            pc = pc-&gt;next;
+        &#125;else&#123;
+            pc-&gt;next = pb;
+            pb = pb-&gt;next;
+            pc = pc-&gt;next;
+        &#125;
+    &#125;
+    pc-&gt;next=NULL;
+    if(pa!=NULL) pc-&gt;next = pa;
+    if(pb!=NULL) pc-&gt;next = pb;
+&#125;
+</code></pre><h5 id="用头插法将两个递增有序的序列合并成递减有序的序列"><a class="anchor" href="#用头插法将两个递增有序的序列合并成递减有序的序列">#</a> 用头插法将两个递增有序的序列合并成递减有序的序列</h5><pre><code class="language-c++">void merge(LNode *A, LNode *B, LNode *&amp;C)
+&#123;
+    LNode *pa, *pb,*s;
+    C = (LNode*)malloc(sizeof(LNode));
+    C=NULL;
+    pa = A -&gt;next;
+    pb = B -&gt;next;
+    free(A);
+    free(B);
+    while(pa!=NULL&amp;&amp;pb!=NULL)
+    &#123;
+        if(pa-&gt;data &lt; pb-&gt;data)
+        &#123;
+            s = pa; 
+            pa = pa-&gt;next;
+            s-&gt;next = C-&gt;next;
+            C-&gt;next = s;
+        &#125;else&#123;
+            s = pb;
+            pb = pb-&gt;next;
+            s -&gt;next = C-&gt;next;
+            C-&gt;next = s;
+        &#125;
+    &#125;
+    while(pa!=NULL)
+    &#123;
+        s = pa;
+        pa = pa-&gt;next;
+        s-&gt;next = C-&gt;next;
+        C-&gt;next = s;
+    &#125;
+    while(pb!=NULL)
+    &#123;
+        s = pb;
+        pb = pb-&gt;next;
+        s-&gt;next = C-&gt;next;
+        C-&gt;next = s;
+    &#125;
+&#125;
+</code></pre><h3 id="顺序表的逆置"><a class="anchor" href="#顺序表的逆置">#</a> 顺序表的逆置</h3><pre><code class="language-c++">void reverse(int a[], int left, int right)
+&#123;
+    for(int i = left, j = right; i&lt;j; ++i,--j)
+    &#123;
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    &#125;
+&#125;
+</code></pre><h1 id="栈和队列"><a class="anchor" href="#栈和队列">#</a> 栈和队列</h1><h2 id="栈"><a class="anchor" href="#栈">#</a> 栈</h2><h3 id="栈的几种状态"><a class="anchor" href="#栈的几种状态">#</a> 栈的几种状态</h3><h4 id="栈空"><a class="anchor" href="#栈空">#</a> 栈空</h4><h5 id="顺序栈"><a class="anchor" href="#顺序栈">#</a> 顺序栈</h5><pre><code class="language-c++">s.top == -1
+</code></pre><h5 id="链栈"><a class="anchor" href="#链栈">#</a> 链栈</h5><pre><code class="language-c++">lst-&gt;next=NULL;
+</code></pre><h4 id="栈满"><a class="anchor" href="#栈满">#</a> 栈满</h4><h5 id="顺序栈-2"><a class="anchor" href="#顺序栈-2">#</a> 顺序栈</h5><pre><code class="language-c++">s.top = MaxSize -1;
+</code></pre><h5 id="链栈-2"><a class="anchor" href="#链栈-2">#</a> 链栈</h5><pre><code class="language-c++">从逻辑上来说，链栈没有栈满的情况
+</code></pre><h4 id="非法状态"><a class="anchor" href="#非法状态">#</a> 非法状态</h4><p>上溢：栈满，继续进栈。</p><p>下溢：栈空，继续出栈。</p><h3 id="栈的两个操作"><a class="anchor" href="#栈的两个操作">#</a> 栈的两个操作</h3><h4 id="进栈"><a class="anchor" href="#进栈">#</a> 进栈</h4><h5 id="顺序栈-3"><a class="anchor" href="#顺序栈-3">#</a> 顺序栈</h5><pre><code class="language-c++">s.data[++s.top] = x;
+</code></pre><h5 id="链栈-3"><a class="anchor" href="#链栈-3">#</a> 链栈</h5><pre><code class="language-c++">s-&gt;next = lst-&gt;next;
+lst-&gt;next = s;
+</code></pre><h4 id="出栈"><a class="anchor" href="#出栈">#</a> 出栈</h4><h5 id="顺序栈-4"><a class="anchor" href="#顺序栈-4">#</a> 顺序栈</h5><pre><code class="language-c++">x = s.data[s.top--];
+</code></pre><h5 id="链栈-4"><a class="anchor" href="#链栈-4">#</a> 链栈</h5><pre><code class="language-c++">p = lst-&gt;next;
+x = p-&gt;data;
+lst-&gt;next = p-&gt;next;
+free(p);
+</code></pre><h3 id="循环队列"><a class="anchor" href="#循环队列">#</a> 循环队列</h3><h4 id="顺序队列的假溢出"><a class="anchor" href="#顺序队列的假溢出">#</a> 顺序队列的假溢出</h4><p>是指顺序队列经过一系列的进队和出队后，头尾指针都指向数组末端，虽然队中没有元素，但任然无法让元素进队，这就 “假溢出” 现象。解决 “假溢出” 现象的方法是，将顺序队列构造成环状，这样头尾指针可以沿着环头，这样就永远不会出现两者来到数组尽头无法继续往下走的情况，这就是循环队列。</p><h4 id="循环队列的两个状态"><a class="anchor" href="#循环队列的两个状态">#</a> 循环队列的两个状态</h4><h5 id="队空状态"><a class="anchor" href="#队空状态">#</a> 队空状态</h5><pre><code class="language-c++">qu.rear == qu.front;
+</code></pre><h5 id="队满状态"><a class="anchor" href="#队满状态">#</a> 队满状态</h5><pre><code class="language-c++">(qu.rear+1)%MaxSize = qu.front;
+</code></pre><h4 id="循环队列的两种操作"><a class="anchor" href="#循环队列的两种操作">#</a> 循环队列的两种操作</h4><h5 id="进队"><a class="anchor" href="#进队">#</a> 进队</h5><pre><code class="language-c++">qu.rear = (qu.rear+1)%MaxSize; qu.data[qu.rear] = x;
+</code></pre><h5 id="出队"><a class="anchor" href="#出队">#</a> 出队</h5><pre><code class="language-c++">qu.front = (qu.front+1)%MaxSize; x = qu.data[qu.front];
+</code></pre><h3 id="抽象数据类型adt"><a class="anchor" href="#抽象数据类型adt">#</a> 抽象数据类型 (ADT)</h3><pre><code class="language-c++">ADT name
+&#123;
+    数据对象集:
+    	对象1；对象2; ... 对象n;
+    数据关系集:
+    	数据关系1=&#123;&lt;对象1， 对象2&gt;,&lt;对象2，对象n&gt;, ..., &lt;对象n-1, 对象n&gt;&#125;
+        数据关系2=&#123;树， 图， 线性表， 集合&#125;
+    数据操作集：
+        操作1;操作2; ... 操作n;
+        
+&#125;
+</code></pre><h1 id="树-二叉树和森林"><a class="anchor" href="#树-二叉树和森林">#</a> 树、二叉树和森林</h1><h2 id="树"><a class="anchor" href="#树">#</a> 树</h2><h2 id="二叉树"><a class="anchor" href="#二叉树">#</a> 二叉树</h2><h3 id="二叉树的遍历"><a class="anchor" href="#二叉树的遍历">#</a> 二叉树的遍历</h3><h4 id="递归版"><a class="anchor" href="#递归版">#</a> 递归版</h4><h5 id="先序遍历"><a class="anchor" href="#先序遍历">#</a> 先序遍历</h5><pre><code class="language-c++">void preorder(BTNode *p)
+&#123;
+    visit(p);
+    preorder(p-&gt;lchild);
+    perorder(p-&gt;rchild);
+&#125;
+</code></pre><h5 id="中序遍历"><a class="anchor" href="#中序遍历">#</a> 中序遍历</h5><pre><code class="language-c++">void inorder(BTNode *p)
+&#123;
+    inorder(p-&gt;lchild);
+    visit(p);
+    inorder(p-&gt;rchild);
+&#125;
+</code></pre><h5 id="后序遍历"><a class="anchor" href="#后序遍历">#</a> 后序遍历</h5><pre><code class="language-c++">void postorder(BTNode *p)
+&#123;
+    postorder(p-&gt;lchild);
+    postorder(p-&gt;rchild);
+    visit(p);
+&#125;
+</code></pre><h5 id="后序遍历的应用"><a class="anchor" href="#后序遍历的应用">#</a> 后序遍历的应用</h5><h6 id="计算算术表达式的值"><a class="anchor" href="#计算算术表达式的值">#</a> 计算算术表达式的值</h6><blockquote><p><strong>思路分析</strong>：先将算术表述存储到二叉树中，然后先计算左子树的值，再计算右子树的值，然后将得到的两个值计算出来，等到最后的值，这正好对应先遍历左子树，再遍历右子树，最后访问根节点的后序遍历。</p></blockquote><pre><code class="language-c++">int op(char a, char b, char o)
+&#123;
+    switch(o)
+    &#123;
+        case '+': return a+b;
+        case '-': return a-b;
+        case '*': return a*b;
+        case '/': return a/b;
+    &#125;
+&#125;
+
+int comp(BTNode *p)
+&#123;
+	int A,B;
+    if(p!=NULL)
+    &#123;
+        if(p-&gt;lchild!=NULL&amp;&amp;p-&gt;lchild!=NULL)
+        &#123;
+            A=comp(p-&gt;lchild);
+            B=com(p-&gt;rchild);
+            return op(A,B,p-&gt;data);
+        &#125;else return p-&gt;data-'0';
+    &#125;else return 0;
+    
+&#125;
+</code></pre><h6 id="求一棵二叉树的深度"><a class="anchor" href="#求一棵二叉树的深度">#</a> 求一棵二叉树的深度</h6><blockquote><p>** 分析思路：** 整棵树的的深度 D=max {LD,RD}+1，所以先求出左子树的深度，再求出右子树的深度，然后比较两者的大小后加 1，最后得到整棵树的深度。整个过程正好对应后序遍历。</p></blockquote><pre><code class="language-c++">int getDepth(BTNode *p)
+&#123;
+    int LD,RD;
+    if(p!=NULL)
+    &#123;
+        LD = getDepth(p-&gt;lchild);
+        RD = getDepth(p-&gt;lchild);
+        return ((LD&gt;RD)?LD:RD)+1;
+    &#125; 
+    return 0;
+&#125;
+</code></pre><h5 id="层序遍历"><a class="anchor" href="#层序遍历">#</a> 层序遍历</h5><pre><code class="language-c++">void level(BTNode *p)
+&#123;
+    BTNode qu[MaxSize];
+    int front,rear;
+    front=rear=0;
+    BTNode* q;
+    if(p!=NULL)
+    &#123;
+        rear=(rear+1)%MaxSize;
+        qu[rear] = p;
+        Visit(p);
+        while(front!=rear)
+        &#123;
+            front = (front+1)%MaxSize;
+            q = qu[front];
+            if(q-&gt;lchild!=NULL)
+            &#123;
+                rear = (rear + 1)%MaxSize;
+                qu[rear] = q-&gt;lchild;
+            &#125;
+            if(q-&gt;rchild!=NULL)
+            &#123;
+                rear = (rear+1)%MaxSize;
+                qu[rear] = q-&gt;rchild;
+            &#125;
+        &#125;
+    &#125;
+    
+&#125;
+</code></pre><h5 id="层序遍历的应用"><a class="anchor" href="#层序遍历的应用">#</a> 层序遍历的应用</h5><h6 id="求二叉树的宽度"><a class="anchor" href="#求二叉树的宽度">#</a> 求二叉树的宽度</h6><pre><code class="language-c++">typedef struct&#123;
+    BTNode *p;
+    int lno;
+&#125;St;
+int maxNode(BTNode *p)
+&#123;
+    int front=0,rear=0,Lno=0;
+    St que[MaxSize];
+    BTNode *q;
+    if(p!=NULL)
+    &#123;
+        ++rear;
+        que[rear].p=p;
+        que[rear].lno=1;
+        while(rear!=front)
+        &#123;
+            ++front;
+            q=que[front].p;
+            Lno = que[front].lno;
+            if(q-&gt;lchild!=NULL)
+            &#123;
+                ++rear;
+                que[rear].p=q-&gt;lchild;
+                que[rear].lno = Lno+1;
+            &#125;
+            if(q-&gt;rchild!=NULL)
+            &#123;
+                ++rear;
+                que[rear].p = q-&gt;rchild;
+                que[rear].lno = Lno+1;
+            &#125;
+        &#125;
+        int max = 0;
+        for(int i= 1;i &lt;= Lno; ++i)
+        &#123;
+            int n = 0;
+            for(int j=0; j&lt;rear; ++j)
+                if(que[j].lno == i) ++n;
+            if(n&gt;max)  max=n;
+         &#125;
+        return max;
+    &#125;
+    return 0;
+&#125;
+</code></pre><h4 id="非递归版"><a class="anchor" href="#非递归版">#</a> 非递归版</h4><h5 id="先序遍历-2"><a class="anchor" href="#先序遍历-2">#</a> 先序遍历</h5><pre><code class="language-c++">void preorderNonRecurision(BTNode *p)
+&#123;
+    if(p!=NULL)
+    &#123;
+        BTNode* Stack[MaxSize];
+        BTNode* q;
+        int top = -1;
+        Stack[++top] = p;
+        while(top!=-1)
+        &#123;
+            q = Stack[top--];
+            visit(p);
+            if(q-&gt;rchild) Stack[++top] = q-&gt;rchild;
+            if(q-&gt;lchild) Stack[++top] = q-&gt;lchild;
+        &#125;
+    &#125;
+&#125;
+</code></pre><h5 id="中序遍历-2"><a class="anchor" href="#中序遍历-2">#</a> 中序遍历</h5><pre><code class="language-c++">void inorderNonRecurision(BTNode *p)
+&#123;
+    if(p!=NULL)
+    &#123;
+        BTNode *stack[MaxSize];
+        BTNode *q;
+        int top = -1;
+        q=p;
+        while(top!=-1||q!=NULL)
+        &#123;
+            while(q!=NULL)
+            &#123;
+                stack[++top] = q;
+                q= q-&gt;lchild;
+            &#125;
+            if(top!=-1)
+            &#123;
+                q = stack[top--];
+                visit(p);
+                p = p-&gt;rchild;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre><h5 id="后序遍历-2"><a class="anchor" href="#后序遍历-2">#</a> 后序遍历</h5><blockquote><p>逆后序遍历是先序遍历过程中对左右子树遍历顺序交换所得的结果。</p><p>因此，逆后序遍历经过逆序后就等到了后序遍历。</p></blockquote><pre><code class="language-c++">void postorderNonRecurision(BTNode *p)
+&#123;
+    if(P!=NULL)
+    &#123;
+        BTNode *s1[MaxSize],*s2[MaxSize];
+   		BTNode *q;
+    	int top1=-1,top2=-1;
+        s1[++top1] = p;
+        while(top!=-1)
+        &#123;
+           q = s1[top1--];
+           s2[++top2] = q;
+            if(q-&gt;lchild) s1[++top1] = q-&gt;lchild;
+            if(q-&gt;rchild) s1[++top1] = q-&gt;rchild;
+        &#125;
+        while(top2!=-1)
+        &#123;
+            q = s2[top2--];
+            visit(q);
+        &#125;       
+    &#125;  
+&#125;
+</code></pre><h4 id="二叉树线索化"><a class="anchor" href="#二叉树线索化">#</a> 二叉树线索化</h4><pre><code class="language-c++">typedef TBTNode&#123;
+    int data;
+    int ltag,rtag;
+    TBTNode *lchild, *rchild;
+&#125;TBTNode;
+</code></pre><h5 id="中序遍历对二叉树线索化"><a class="anchor" href="#中序遍历对二叉树线索化">#</a> 中序遍历对二叉树线索化</h5><pre><code class="language-c++">void InThread(TBTNode *p ,TBTNode* pre)
+&#123;
+    if(p!=NULL)
+    &#123;
+        InThread(p-&gt;lchild, pre);
+        if(p-&gt;lchild==NULL)
+        &#123;
+            p-&gt;lchild = pre;
+            p-&gt;ltag = 1;
+        &#125;
+        if(pre!=NULL&amp;&amp;pre-&gt;rchild==NULL)
+        &#123;
+            pre-&gt;rchild = p;
+            pre-&gt;rtag = 1;
+        &#125;
+        pre = p;
+        InThread(p-&gt;rchild, pre);
+    &#125;
+&#125;
+</code></pre><h5 id="通过中序遍历建立中序线索二叉树"><a class="anchor" href="#通过中序遍历建立中序线索二叉树">#</a> 通过中序遍历建立中序线索二叉树</h5><pre><code class="language-c++">void createInThread(TBTNode *root)
+&#123;
+    TBTNode *pre=NULL;
+    if(root != NULL)
+    &#123;
+        InThread(root, pre);
+        pre-&gt;rchild = NULL;
+        pre-&gt;rtag = 1;
+    &#125;
+    
+&#125;
+</code></pre><h5 id="先序遍历对二叉树线索化"><a class="anchor" href="#先序遍历对二叉树线索化">#</a> 先序遍历对二叉树线索化</h5><pre><code class="language-c++">void PreThread(TBTNode *p, TBTNode *pre)
+&#123;
+    if(p!=NULL)
+    &#123;
+        if(p-&gt;lchild==NULL)
+        &#123;
+            p-&gt;lchild = pre;
+            p-&gt;ltag = 1;
+        &#125;
+        if(pre!=NULL&amp;&amp;pre-&gt;lchild==NULL)
+        &#123;
+            pre-&gt;rchild = p;
+            p-&gt;rtag = 1;
+        &#125;
+        pre = p;
+        PreThread(p-&gt;lchild,pre);
+        PreThread(p-&gt;rchild, pre);
+    &#125;
+&#125;
+</code></pre><h5 id="后续遍历对二叉树线索化"><a class="anchor" href="#后续遍历对二叉树线索化">#</a> 后续遍历对二叉树线索化</h5><pre><code class="language-c++">void PostThread(TBTNode *p, TBTNode *pre)
+&#123;
+    if(p!=NULL)
+    &#123;
+        PostThread(p-&gt;lchild, pre);
+        PostThread(p-&gt;rchild, pre);
+        if(p-&gt;lchild==NULL)
+        &#123;
+            p-&gt;lchild = pre;
+            p-&gt;ltag = 1;
+        &#125;
+        if(pre!=NULL&amp;&amp;pre-&gt;lchild==NULL)
+        &#123;
+            pre-&gt;rchild = p;
+            p-&gt;rtag = 1;
+        &#125;
+        pre = p;
+    &#125;
+&#125;
+</code></pre><h1 id="图"><a class="anchor" href="#图">#</a> 图</h1><h2 id="存储结构"><a class="anchor" href="#存储结构">#</a> 存储结构</h2><h3 id="邻接矩阵"><a class="anchor" href="#邻接矩阵">#</a> 邻接矩阵</h3><pre><code class="language-c++">typedef sturct&#123;
+    int adj[MaxSize][MaxSize];
+    int n;
+    int vex[MaxSize];
+&#125;MGraph;
+</code></pre><h3 id="邻接表"><a class="anchor" href="#邻接表">#</a> 邻接表</h3><pre><code class="language-c++">typedef struct ArcNode&#123;
+    int adjvex;//边所指向的结点位置
+    struct ArcNode* nextarc;//指向下一条边的指针
+    int info；
+&#125;ArcNode;
+typedef struct 
+&#123;
+    char data;
+    ArcNode *firstarc;
+&#125;VNode;
+typedef struct&#123;
+    VNode* adjlist[MaxSize];//邻接表
+    int n,e;//定点数和边数
+&#125;AGraph
+</code></pre><h3 id="图的遍历操作"><a class="anchor" href="#图的遍历操作">#</a> 图的遍历操作</h3><h4 id="深度优先遍历"><a class="anchor" href="#深度优先遍历">#</a> 深度优先遍历</h4><h5 id="以邻接表为存储结构的深度优先遍历"><a class="anchor" href="#以邻接表为存储结构的深度优先遍历">#</a> 以邻接表为存储结构的深度优先遍历</h5><pre><code class="language-c++">void DFS(AGraph *G, int v0)
+&#123;
+    int Visited[MaxSize]=&#123;0&#125;;
+    ArcNode *p;
+    Visited[v0] = 1;
+    Visit(v0);
+    p = G-&gt;adjlist[v0]-&gt;firstrac;//p指向第一条边
+    while(p!=NULL)
+    &#123;
+        if(Visited[p-&gt;adjvex] == 0)
+            DFS(G, p-&gt;adjvex);
+        p = p-&gt;nextarc;
+        
+    &#125;
+&#125;
+</code></pre><h5 id="以邻接矩阵为存储结构的深度优先遍历"><a class="anchor" href="#以邻接矩阵为存储结构的深度优先遍历">#</a> 以邻接矩阵为存储结构的深度优先遍历</h5><pre><code class="language-c++">int Visited[MaxSize];
+void DFSTraverse(MGraph *G)
+&#123;
+    for(int v = 0; v&lt; G-&gt;n; ++v)
+        Visited[v] = 0;
+    for(int v = 0; v&lt;G--&gt;n;++v)
+        DFS(G,v);
+    
+&#125;
+void DFS(MGraph *G, int v0)
+&#123;
+    Visited[v0] = 1;
+    Visit(v0);
+    for(int i = 0; i &lt; n; ++i)
+    &#123;
+        if(G-&gt;edges[v0][i]!=INF&amp;&amp;Visited[i]==0)
+            DFS(G, i);
+    &#125;
+&#125;
+</code></pre><h5 id="以邻接表为存储结构的广度优先遍历"><a class="anchor" href="#以邻接表为存储结构的广度优先遍历">#</a> 以邻接表为存储结构的广度优先遍历</h5><pre><code class="language-c++">void BFS(AGraph *G, int v, int visited[MaxSize])
+&#123;
+    ArcNode* p;
+    int que[MaxSize],front=0,rear=0;
+    int j;
+    Visit(v);
+    visited[v]=1;
+    rear = (rear+1)%MaxSize;
+    que[rear] = v;
+    while(rear!=front)
+    &#123;
+        front = (front+1)%MaxSize;
+        j = que[front];
+        p = G-&gt;adjlist[j]-&gt;firstarc;
+        while(p!=NULL)
+        &#123;
+            if(visited[p-&gt;adjvex] == 0)
+            &#123;
+                Visit(p-&gt;adjvex);
+                visited[p-&gt;adjvex] = 1;
+                rear = (rear+1)%MaxSize;
+                que[rear] = p-&gt;adjvex;
+            &#125;
+            p = p-&gt;nextarc;
+        &#125;
+    &#125;
+&#125;
+
+</code></pre><h5 id="prim"><a class="anchor" href="#prim">#</a> prim</h5><pre><code class="language-c++">void Prim(MGraph *G, int v0, int &amp;sum)
+&#123;
+    int vset[maxsize],lowcast[maxisze], v = v0;
+    int i, j, k, min;
+    for(i = 0; i &lt; G-&gt;n; ++i)
+    &#123;
+        lowcast[i] = G-&gt;edges[v0][i];
+        vset[i] = 0;
+    &#125;
+    vset[v0] = 1;
+    sum = 0;
+    for(i = 0; i &lt; G-&gt;n-1; ++i)
+    &#123;
+        min = INF;
+        for(j = 0; j &lt; G-&gt;n; ++j)
+            if(vset[j]==0&amp;&amp;lowcast[j] &lt; min)
+            &#123;
+                min = lowcast[j];
+                k = j;
+            &#125;
+        vset[k] = 1;
+        v = k;
+        sum += min;
+        for(j = 0; j &lt; G-&gt;n; ++j)
+            if(vset[j]==0&amp;&amp;G-&gt;edges[v][j]&lt;lowcast[j])
+                lowcast[j] = G-&gt;edges[v][j];
+    &#125;  
+&#125;
+</code></pre><h5 id="kruskal"><a class="anchor" href="#kruskal">#</a> kruskal</h5><pre><code class="language-c++">typedef struct&#123;
+    int a, b;//边的起点和终点
+    int w;//边的权值
+&#125;Road;
+Road road[maxsize];
+int v[maxsize];//定义并查集
+int getRoot(int a)
+&#123;
+    while(a != v[a]) a = v[a];
+    return a;
+&#125;
+void kruskal(MGraph *G, int &amp;sum, Road road[])
+&#123;
+    int i;
+    int a,b;
+    sum = 0;
+    for(i = 0; i &lt; G-&gt;n; ++i) v[i] = i;
+    sort(road, G-&gt;e);
+    for(i = 0; i &lt; G-&gt;e; ++i)
+    &#123;
+        a = getRoot(road[i].a);
+        b = getRoot(road[i].b);
+        if(a!=b)
+        &#123;
+            v[a] = b;
+            sum += road[i].
+        &#125;
+    &#125;
+    
+&#125;
+</code></pre><h5 id="dijkstra"><a class="anchor" href="#dijkstra">#</a> dijkstra</h5><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> LR<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>a<span class="token text string">((a))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">4</span><span class="token arrow operator">--></span></span>b<span class="token text string">((b))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>a<span class="token text string">((a))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">6</span><span class="token arrow operator">--></span></span>d<span class="token text string">((d))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>a<span class="token text string">((a))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">6</span><span class="token arrow operator">--></span></span>c<span class="token text string">((c))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>b<span class="token text string">((b))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">7</span><span class="token arrow operator">--></span></span>e<span class="token text string">((e))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>d<span class="token text string">((d))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">5</span><span class="token arrow operator">--></span></span>f<span class="token text string">((f))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>c<span class="token text string">((c))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">5</span><span class="token arrow operator">--></span></span>f<span class="token text string">((f))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>f<span class="token text string">((f))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">1</span><span class="token arrow operator">--></span></span>e<span class="token text string">((e))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>e<span class="token text string">((e))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">6</span><span class="token arrow operator">--></span></span>g<span class="token text string">((g))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>f<span class="token text string">((f))</span><span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">8</span><span class="token arrow operator">--></span></span>g<span class="token text string">((g))</span></pre></td></tr></table></figure><table><thead><tr><th></th><th>第一轮</th><th>第二轮</th><th>第三轮</th><th>第四轮</th><th>第五轮</th><th>第六轮</th></tr></thead><tbody><tr><td>b</td><td>&lt;font color = red size=6&gt;4&lt;/font&gt;&lt;br&gt; &lt;font color=red&gt;a-b&lt;/font&gt;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>c</td><td>&lt;font size =5&gt;6&lt;/font&gt;&lt;br&gt;a-c</td><td>&lt;font color=red&gt;&lt;font size =5&gt;6&lt;/font&gt;&lt;br/&gt;a-c&lt;/font&gt;</td><td></td><td></td><td></td><td></td></tr><tr><td>d</td><td>&lt;font size =5&gt;6&lt;/font&gt;&lt;br&gt;a-d</td><td>&lt;font size =5&gt;6&lt;/font&gt;&lt;br/&gt;a-d</td><td>&lt;font color=red&gt;&lt;font size =5&gt;6&lt;/font&gt;&lt;br/&gt;a-d&lt;/font&gt;</td><td></td><td></td><td></td></tr><tr><td>e</td><td>INF&lt;br&gt;a-e</td><td>&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-b-e</td><td>&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-b-e</td><td>&lt;font color=red&gt;&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-b-e&lt;/font&gt;</td><td></td><td></td></tr><tr><td>f</td><td>INF&lt;br&gt;a-f</td><td>INF&lt;br/&gt;a-f</td><td>&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-c-f</td><td>&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-c-f</td><td>&lt;font color=red&gt;&lt;font size =5&gt;11&lt;/font&gt;&lt;br/&gt;a-c-f&lt;/font&gt;</td><td></td></tr><tr><td>g</td><td>INF&lt;br&gt;a-g</td><td>INF&lt;br/&gt;a-g</td><td>INF&lt;br/&gt;a-g</td><td>INF&lt;br/&gt;a-g</td><td>&lt;font size =5&gt;17&lt;/font&gt;&lt;br/&gt;a-b-e-g</td><td>&lt;font size =5&gt;17&lt;/font&gt;&lt;br/&gt;a-b-e-g</td></tr><tr><td>集合</td><td>b</td><td>b c</td><td>b c d</td><td>b c d e</td><td>b c d e f</td><td>b c d e f g</td></tr></tbody></table><h5 id="floyd"><a class="anchor" href="#floyd">#</a> floyd</h5><blockquote><ol><li>设置两个矩阵 A 和 Path，初始时将图的连接矩阵赋值给 A，将矩阵 Path 中所有的元素赋值为 - 1.</li><li>以顶点 k 为中间点，k 取 0~n-1 对图中所有顶点对 {i,j} 进行如下检测和修改：如果<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mi>A</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>+</mo><mi>A</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A[i][j] &gt; A[i][k] + A[k][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">A</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:.05724em">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">A</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:.03148em">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.2222222222222222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">A</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:.03148em">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:.05724em">j</span><span class="mclose">]</span></span></span></span> 的值，将 $A [i][j] <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>改为</mtext></mrow><annotation encoding="application/x-tex">改为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0"></span><span class="mord cjk_fallback">改</span><span class="mord cjk_fallback">为</span></span></span></span> A [i][k] + A [k][j]<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>的值，将</mtext></mrow><annotation encoding="application/x-tex">的值，将</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0"></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">值</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">将</span></span></span></span> Path [i][j]$ 改为 k, 否则什么都不做。</li></ol></blockquote><h6 id="打印任意两点间的最短路径"><a class="anchor" href="#打印任意两点间的最短路径">#</a> 打印任意两点间的最短路径</h6><pre><code class="language-c++">void printPath(int u, int v, int path[][maxsize], int A[][maxsize])
+&#123;
+    if(A[u][v]==INF)
+        return;
+    else&#123;
+        if(path[u][v] == -1)
+        &#123;
+           cout&lt;&lt;&quot;&lt;&quot;&lt;&lt;u&lt;&lt;&quot;,&quot;&lt;&lt;v&lt;&lt;&quot;&gt;;&quot;;
+        &#125;else&#123;
+            int mid = path[u][v];
+            printPath(u, mid, path, A);
+            printPath(mid, v, path, A);
+        &#125;
+    &#125;
+&#125;
+</code></pre><h6 id="floyd算法的实现"><a class="anchor" href="#floyd算法的实现">#</a> floyd 算法的实现</h6><pre><code class="language-c++">void Floyd(MGraph *G, int Path[][maxsize], int A[][maxsize])
+&#123;
+    for(int i = 0; i &lt; G-&gt;n, ++i)
+    	for(int j = 0; j &lt; G-&gt;n; ++j)
+        &#123;
+            Path[i][j] = -1;
+            A[i][j] = G-&gt;edges[i][j];
+        &#125;
+    for(int k = 0; k &lt; G-&gt;n; ++k)
+        for(int i = 0; i &lt; G-&gt;n; ++i)
+            for(int j = 0; j &lt; G-&gt;n; ++j)
+                if(A[i][j] &gt; A[i][k] + A[k][j])
+                &#123;
+                    A[i][j] = A[i][k] + A[k][j];
+                    path[i][j] = k;
+                &#125;
+&#125;
+</code></pre><h5 id="实现用邻接表存储的图的拓扑排序"><a class="anchor" href="#实现用邻接表存储的图的拓扑排序">#</a> 实现用邻接表存储的图的拓扑排序</h5><pre><code class="language-c++">typedef struct&#123;
+    int arcvex;
+    struct ArcNode* nextarc;
+    int info;
+&#125;ArcNode;
+typedef struct&#123;
+    char data;
+    int count;
+    ArcNode* firstarc;
+&#125;VNode;
+typedef struct&#123;
+    VNode* adjlist[maxsize];
+    int n,e;
+&#125;
+
+int TopSort(AGraph *G)
+&#123;
+    int stack[maxsize],top = -1, n=0;
+    ArcNode* p;
+    for(int i = 0; i &lt; G-&gt;n; ++i)
+    &#123;
+        if(G-&gt;adjlist[i]-&gt;count == 0)
+            stack[++top] = i;
+    &#125;
+    while(top != -1)
+    &#123;
+        int v =stack[top--];
+        ++n;
+        cout &lt;&lt; v&lt;&lt;&quot; &quot;;
+        p = G-&gt;adjlist[v]-&gt;firstarc;
+        while(p!=NULL)
+        &#123;
+            int v1 = -&gt;adjvex;
+            --(G-&gt;adjlist[v1]-&gt;count);
+            if(G-&gt;adjlist[v1]-&gt;count == 0)
+                stack[++top] = v1;
+            p = p-&gt;nextarc;
+        &#125;
+    &#125;
+    if(G-&gt;n == n)
+        return 1;
+    return 0;
+&#125;
+</code></pre><h5 id="关键路径的求法"><a class="anchor" href="#关键路径的求法">#</a> 关键路径的求法</h5><blockquote><ol><li>先求事件的最早发生时间（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>e</mi><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">{</mo><mi>v</mi><mi>e</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">ve(j) =max\{ve(i)+a_k\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:.05724em">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.2222222222222222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.33610799999999996em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:.03148em">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>）</li><li>其次，求出事件的最晚发生时间 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>l</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">{</mo><mi>v</mi><mi>l</mi><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">vl(i) = min\{vl(j)-a_k\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal" style="margin-right:.01968em">l</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal" style="margin-right:.01968em">l</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:.05724em">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.2222222222222222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.33610799999999996em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:.03148em">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>)</li><li>最后，求出活动的最早发生时间和最晚发生时间<ol><li>活动的最早发生时间 = 该活动的起始事件的最早发生时间（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mi>e</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">e(a_k) = ve(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.33610799999999996em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:.03148em">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span>）</li><li>活动的最晚发生时间 = 该活动的终止事件的最晚发生时间 - 该活动的持续时间 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mi>l</mi><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>a</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">l(a_k) = vl(j) - a_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal" style="margin-right:.01968em">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.33610799999999996em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:.03148em">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathnormal" style="margin-right:.03588em">v</span><span class="mord mathnormal" style="margin-right:.01968em">l</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:.05724em">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.2222222222222222em"></span></span><span class="base"><span class="strut" style="height:.58056em;vertical-align:-.15em"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.33610799999999996em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:.03148em">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span></span></span></span>)</li></ol></li></ol><p>**TODO:** 在（1）之前要对图进行拓扑排序，在（3）之前要对图进行逆拓扑排序</p></blockquote><h1 id="排序"><a class="anchor" href="#排序">#</a> 排序</h1><h2 id="插入类排序"><a class="anchor" href="#插入类排序">#</a> 插入类排序</h2><h3 id="直接插入排序时间复杂度与待排序列的初始序列有关"><a class="anchor" href="#直接插入排序时间复杂度与待排序列的初始序列有关">#</a> 直接插入排序（时间复杂度与待排序列的初始序列有关）</h3><pre><code class="language-c++">void InsertSort(int a[], int n)
+&#123;
+    int tmp=0;
+    for(int i = 1; i&lt;n; ++i)
+    &#123;
+        tmp = a[i];
+        j = i-1;
+        while(j&gt;=0&amp;&amp;temp&lt;R[j])
+        &#123;
+            R[j+1] = R[j];
+            --j;
+        &#125;
+        R[j+1] =temp;
+    &#125;
+&#125;
+void InsertSort(int a[], int n)
+&#123;
+    for(int i=1;i&lt;n;i++)
+    &#123;
+        int temp=a[i];
+        for(int j=i-1;j&gt;=0;--j)
+        &#123;
+            if(temp&lt;a[j]) a[j+1] = a[j];
+        &#125;
+        a[j+1] = temp;
+    &#125;
+&#125;
+</code></pre><h3 id="折半插入排序关键字比较次数与初始序列无关"><a class="anchor" href="#折半插入排序关键字比较次数与初始序列无关">#</a> 折半插入排序（关键字比较次数与初始序列无关）</h3><pre><code class="language-c++">void BinaryInsSort(int a[], int n)
+&#123;
+    int tmp=0, low=0, high=0, mid=0;
+    for(int i = 1; i&lt;n;++i)
+    &#123;
+        low = 0;
+        high = i -1;
+        tmp = a[i];
+        while(low&lt;=high)
+        &#123;
+            mid = (low+high)/2;
+            if(a[mid] &gt; tmp) high = mid-1;
+            else low = mid + 1;
+        &#125;
+        for(int j = i-1; j&gt;=high+1; --j)
+            a[j+1] = a[j];
+        a[high+1] = tmp;
+    &#125;
+    
+&#125;
+</code></pre><h3 id="希尔排序仅用于顺序存储结构"><a class="anchor" href="#希尔排序仅用于顺序存储结构">#</a> 希尔排序 (仅用于顺序存储结构)</h3><pre><code class="language-c++">void shell(int a[], int n)
+&#123;
+    int tmp;
+    for(int dk = n/2; dk&gt;=1; dk/=2)
+        for(int i = dk; i&lt;n; ++i)
+        &#123;
+            if(a[i]&lt;a[i-dk])
+            &#123;
+                a[i] = tmp;
+                for(int j = i - dk; j&gt;=0&amp;&amp;tmp&lt;a[j];j-=dk)
+                    a[j+dk] = a[j];
+                a[j+dk] = tmp;
+            &#125;
+        &#125;
+&#125;
+</code></pre><h2 id="交换类排序"><a class="anchor" href="#交换类排序">#</a> 交换类排序</h2><h3 id="起泡排序"><a class="anchor" href="#起泡排序">#</a> 起泡排序</h3><pre><code class="language-c++">void BubbleSort(int a[], int n)
+&#123;
+    int tmp=0, flag=0;
+    for(int i=n-1; i&gt;=1; ++i)
+    &#123;
+       flag=0;
+        for(int j = 1; j&lt;=i; ++j)
+            if(a[j-1]&gt;a[j])
+            &#123;
+                tmp = a[j-1];
+                a[j-1] = a[j];
+                a[j] = tmp;
+                flag = 1;
+            &#125;
+        if(flag == 1)
+            return;    
+    &#125;
+&#125;
+</code></pre><h3 id="快速排序"><a class="anchor" href="#快速排序">#</a> 快速排序</h3><pre><code class="language-c++">void QuickSort(int a[], int low, int high)
+&#123;
+    int tmp=0;
+    int i=low, j=high;
+    if(low&lt;high)
+    &#123;
+        tmp=a[low];
+        while(i&lt;j)
+        &#123;
+            while(i&lt;j&amp;&amp;a[j]&gt;=temp) --j;
+            if(i&lt;j)
+            &#123;
+                a[i] = a[j];
+                ++i;
+            &#125;
+            while(i&lt;j&amp;&amp;a[i]&lt;temp) ++i;
+            if(i&lt;j)
+            &#123;
+                a[j] = a[i];
+                --j;
+            &#125;
+        &#125;
+        R[i] = tmp;
+        QuickSort(a, low, i-1);
+        QuickSort(a, i+1, high);
+    &#125;
+&#125;
+</code></pre><h2 id="选择类排序"><a class="anchor" href="#选择类排序">#</a> 选择类排序</h2><h3 id="简单选择排序"><a class="anchor" href="#简单选择排序">#</a> 简单选择排序</h3><pre><code class="language-c++">void SelectSort(int a[], int n)
+&#123;
+    int tmp,k;
+    for(int i=0; i&lt;n; ++i)
+    &#123;
+        k = i;
+        for(int j = i+1; j&lt;n; ++j)
+            if(a[k]&gt;a[j])
+                k = j;
+        tmp = a[k];
+        a[k] = a[i];
+        a[i] = tmp;
+    &#125;
+                
+&#125;
+</code></pre><h3 id="堆排序"><a class="anchor" href="#堆排序">#</a> 堆排序</h3><p>初始序列：49 38 65 97 76 13 27 49</p><p>建堆</p><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> TD<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>a<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>b<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>c<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>d<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>e<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>f<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>g<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>h<span class="token text string">((49*))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>a<span class="token arrow operator">---</span>b<span class="token arrow operator">---</span>d<span class="token arrow operator">---</span>h</pre></td></tr><tr><td data-num="11"></td><td><pre>a<span class="token arrow operator">---</span>c<span class="token arrow operator">---</span>g</pre></td></tr><tr><td data-num="12"></td><td><pre>b<span class="token arrow operator">---</span>e</pre></td></tr><tr><td data-num="13"></td><td><pre>c<span class="token arrow operator">---</span>f</pre></td></tr></table></figure><p>根据大根堆的定义调整堆，从堆的底部开始调整</p><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> TD<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>49<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>38<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>65<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>97<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>76<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>13<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>27<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>49_<span class="token text string">((49*))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>97<span class="token arrow operator">---</span>49_<span class="token arrow operator">---</span>38</pre></td></tr><tr><td data-num="11"></td><td><pre>97<span class="token arrow operator">---</span>76</pre></td></tr><tr><td data-num="12"></td><td><pre>65<span class="token arrow operator">---</span>13</pre></td></tr><tr><td data-num="13"></td><td><pre>65<span class="token arrow operator">---</span>27</pre></td></tr><tr><td data-num="14"></td><td><pre>49<span class="token arrow operator">---</span>97</pre></td></tr><tr><td data-num="15"></td><td><pre>49<span class="token arrow operator">---</span>65</pre></td></tr></table></figure><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> TD<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>49<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>38<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>65<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>97<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>76<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>13<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>27<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>49_<span class="token text string">((49*))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>97<span class="token arrow operator">---</span>76</pre></td></tr><tr><td data-num="11"></td><td><pre>76<span class="token arrow operator">---</span>49_<span class="token arrow operator">---</span>38</pre></td></tr><tr><td data-num="12"></td><td><pre>76<span class="token arrow operator">---</span>49</pre></td></tr><tr><td data-num="13"></td><td><pre>65<span class="token arrow operator">---</span>13</pre></td></tr><tr><td data-num="14"></td><td><pre>65<span class="token arrow operator">---</span>27</pre></td></tr><tr><td data-num="15"></td><td><pre>97<span class="token arrow operator">---</span>65</pre></td></tr></table></figure><p>调整完成后，符合大根堆的定义。开始堆排序</p><p>将 97 从堆中取出，调整堆</p><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> TD<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>49<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>38<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>65<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>97<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>76<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>13<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>27<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>49_<span class="token text string">((49*))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>38<span class="token arrow operator">---</span>76</pre></td></tr><tr><td data-num="11"></td><td><pre>38<span class="token arrow operator">---</span>65</pre></td></tr><tr><td data-num="12"></td><td><pre>76<span class="token arrow operator">---</span>49_<span class="token arrow operator">---</span>97</pre></td></tr><tr><td data-num="13"></td><td><pre>76<span class="token arrow operator">---</span>49</pre></td></tr><tr><td data-num="14"></td><td><pre>65<span class="token arrow operator">---</span>13</pre></td></tr><tr><td data-num="15"></td><td><pre>65<span class="token arrow operator">---</span>27</pre></td></tr></table></figure><p>删除 97，调整堆</p><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> TD<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>49<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>38<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>65<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>97<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>76<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>13<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>27<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>49_<span class="token text string">((49*))</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>76<span class="token arrow operator">---</span>49_<span class="token arrow operator">---</span>38</pre></td></tr><tr><td data-num="12"></td><td><pre>49_<span class="token arrow operator">---</span>49</pre></td></tr><tr><td data-num="13"></td><td><pre>76<span class="token arrow operator">---</span>65</pre></td></tr><tr><td data-num="14"></td><td><pre>65<span class="token arrow operator">---</span>13</pre></td></tr><tr><td data-num="15"></td><td><pre>65<span class="token arrow operator">---</span>27</pre></td></tr></table></figure><p>然后依次类推，最后得到最终排序</p><figure class="highlight mermaid"><figcaption data-lang="mermaid"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">graph</span> LR<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>49_<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="3"></td><td><pre>49<span class="token text string">((49))</span></pre></td></tr><tr><td data-num="4"></td><td><pre>38<span class="token text string">((38))</span></pre></td></tr><tr><td data-num="5"></td><td><pre>65<span class="token text string">((65))</span></pre></td></tr><tr><td data-num="6"></td><td><pre>97<span class="token text string">((97))</span></pre></td></tr><tr><td data-num="7"></td><td><pre>76<span class="token text string">((76))</span></pre></td></tr><tr><td data-num="8"></td><td><pre>13<span class="token text string">((13))</span></pre></td></tr><tr><td data-num="9"></td><td><pre>27<span class="token text string">((27))</span></pre></td></tr><tr><td data-num="10"></td><td><pre>97<span class="token arrow operator">---</span>76<span class="token arrow operator">---</span>65<span class="token arrow operator">---</span>49_<span class="token arrow operator">---</span>49<span class="token arrow operator">---</span>38<span class="token arrow operator">---</span>27<span class="token arrow operator">---</span>13</pre></td></tr></table></figure><h2 id="归并类排序"><a class="anchor" href="#归并类排序">#</a> 归并类排序</h2><pre><code class="language-c++">void mergeSort(int a[], int low, int high)
+&#123;
+    if(low&lt;high)
+    &#123;
+        int mid = (low+high)/2;
+        mergeSort(a, low, mid-1);
+        mergeSort(a, mid+1, high);
+        merge(A, low, mid, high);
+    &#125;
+&#125;
+</code></pre><h2 id="基数类排序"><a class="anchor" href="#基数类排序">#</a> 基数类排序</h2><h2 id="最佳归并树m叉哈夫曼树"><a class="anchor" href="#最佳归并树m叉哈夫曼树">#</a> 最佳归并树：m 叉哈夫曼树</h2><h2 id="败方树"><a class="anchor" href="#败方树">#</a> 败方树</h2><h2 id="内部排序总结"><a class="anchor" href="#内部排序总结">#</a> 内部排序总结</h2><table><thead><tr><th>排序类型</th><th>最好时间复杂度</th><th>平均时间复杂度</th><th>最坏时间复杂度</th><th>空间复杂度</th><th>稳定性</th></tr></thead><tbody><tr><td>直接插入排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr><tr><td>折半插入排序</td><td>O(n^2)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr><tr><td>希尔排序</td><td>O(n^1.5)</td><td>O(n^1.5)</td><td>O(n^1.5)</td><td>O(1)</td><td>不稳定</td></tr><tr><td>起泡排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr><tr><td>快速排序</td><td>O(nlogn)</td><td>O(nlogn)</td><td>O(n^2)</td><td>O(logn)</td><td>不稳定</td></tr><tr><td>简单选择排序</td><td>O(n^2)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>不稳定</td></tr><tr><td>堆排序</td><td>O(nlogn)</td><td>O(nlogn)</td><td>O(nlogn)</td><td>O(1)</td><td>不稳定</td></tr><tr><td>二路归并排序</td><td>O(nlogn)</td><td>O(nlogn)</td><td>O(nlogn)</td><td>O(n)</td><td>稳定</td></tr><tr><td>基数排序</td><td>O(d(n+r_d))</td><td>O(d(n+r_d))</td><td>O(d(n+r_d))</td><td>O(rd)</td><td>稳定</td></tr></tbody></table><ol><li>经过一趟排序，能够保证一个关键字达到最终位置 —— 交换类 (起泡排序和快速排序) 和选择类排序 (简单选择排序和堆排序)</li><li>关键字比较次数与初始序列无关 —— 简单排序和折半插入排序</li><li>排序趟数与原始序列有关 —— 交换类排序（起泡排序和快速排序）</li></ol><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css"><div class="tags"><a href="/tags/%E5%A4%8D%E4%B9%A0/" rel="tag"><i class="ic i-tag"></i> 复习</a> <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"><i class="ic i-tag"></i> 考研</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="ic i-tag"></i> 数据结构</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-03-11 17:49:19" itemprop="dateModified" datetime="2023-03-11T17:49:19+08:00">2023-03-11</time> </span><span id="ComputerScience/DataStructure/考研数据结构算法/" class="item leancloud_visitors" data-flag-title="考研数据结构算法" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="方聪 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="方聪 支付宝"><p>支付宝</p></div><div><img data-src="/images/paypal.png" alt="方聪 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>方聪 <i class="ic i-at"><em>@</em></i>方聪的博客</li><li class="link"><strong>本文链接：</strong> <a href="http://yoursite.com/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" title="考研数据结构算法">http://yoursite.com/ComputerScience/DataStructure/考研数据结构算法/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/Politics/MarxistPrinciple/%E5%88%86%E6%9E%90%E9%A2%98%E5%86%B2%E5%88%BA%E8%83%8C%E8%AF%B5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesx5fdwj20zk0m81kx.jpg" title="分析题冲刺背诵"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 政治</span><h3>分析题冲刺背诵</h3></a></div><div class="item right"><a href="/English/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E6%A8%A1%E6%9D%BF%E8%83%8C%E8%AF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgrvbd6j20zk0m8qv5.jpg" title="考研英语作文模板背诵与应用"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 英语</span><h3>考研英语作文模板背诵与应用</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">链表的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">头插法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BE%E6%8F%92%E6%B3%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">尾插法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95%E5%92%8C%E5%B0%BE%E6%8F%92%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">头插法和尾插法的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%80"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">应用一</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%BE%E6%8F%92%E6%B3%95%E5%88%9B%E5%BB%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">尾插法创建链表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95%E5%88%9B%E5%BB%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">头插法创建链表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%BA%8C"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">应用二</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E5%B0%BE%E6%8F%92%E6%B3%95%E5%B0%86%E4%B8%A4%E4%B8%AA%E9%80%92%E5%A2%9E%E6%9C%89%E5%BA%8F%E7%9A%84%E5%88%97%E8%A1%A8%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AA%E9%80%92%E5%A2%9E%E6%9C%89%E5%BA%8F%E7%9A%84%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">用尾插法将两个递增有序的列表合并成一个递增有序的列表</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8D%E7%94%A8%E6%96%B0%E5%A2%9E%E5%A4%B4%E7%BB%93%E7%82%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.1.3.2.1.1.</span> <span class="toc-text">不用新增头结点的情况</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%A4%B4%E7%BB%93%E7%82%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.1.3.2.1.2.</span> <span class="toc-text">新增头结点的情况</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E5%A4%B4%E6%8F%92%E6%B3%95%E5%B0%86%E4%B8%A4%E4%B8%AA%E9%80%92%E5%A2%9E%E6%9C%89%E5%BA%8F%E7%9A%84%E5%BA%8F%E5%88%97%E5%90%88%E5%B9%B6%E6%88%90%E9%80%92%E5%87%8F%E6%9C%89%E5%BA%8F%E7%9A%84%E5%BA%8F%E5%88%97"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">用头插法将两个递增有序的序列合并成递减有序的序列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE"><span class="toc-number">1.1.4.</span> <span class="toc-text">顺序表的逆置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text">栈和队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">2.1.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.1.</span> <span class="toc-text">栈的几种状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%A9%BA"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">栈空</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88"><span class="toc-number">2.1.1.1.1.</span> <span class="toc-text">顺序栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E6%A0%88"><span class="toc-number">2.1.1.1.2.</span> <span class="toc-text">链栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E6%BB%A1"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">栈满</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88-2"><span class="toc-number">2.1.1.2.1.</span> <span class="toc-text">顺序栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E6%A0%88-2"><span class="toc-number">2.1.1.2.2.</span> <span class="toc-text">链栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">非法状态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.2.</span> <span class="toc-text">栈的两个操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">进栈</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88-3"><span class="toc-number">2.1.2.1.1.</span> <span class="toc-text">顺序栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E6%A0%88-3"><span class="toc-number">2.1.2.1.2.</span> <span class="toc-text">链栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E6%A0%88"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">出栈</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88-4"><span class="toc-number">2.1.2.2.1.</span> <span class="toc-text">顺序栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E6%A0%88-4"><span class="toc-number">2.1.2.2.2.</span> <span class="toc-text">链栈</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97"><span class="toc-number">2.1.3.</span> <span class="toc-text">循环队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E9%98%9F%E5%88%97%E7%9A%84%E5%81%87%E6%BA%A2%E5%87%BA"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">顺序队列的假溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">循环队列的两个状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%98%9F%E7%A9%BA%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.3.2.1.</span> <span class="toc-text">队空状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%98%9F%E6%BB%A1%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.3.2.2.</span> <span class="toc-text">队满状态</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">循环队列的两种操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E9%98%9F"><span class="toc-number">2.1.3.3.1.</span> <span class="toc-text">进队</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BA%E9%98%9F"><span class="toc-number">2.1.3.3.2.</span> <span class="toc-text">出队</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8Badt"><span class="toc-number">2.1.4.</span> <span class="toc-text">抽象数据类型 (ADT)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97"><span class="toc-number">3.</span> <span class="toc-text">树、二叉树和森林</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text">树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.1.</span> <span class="toc-text">二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%89%88"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">递归版</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.1.1.1.</span> <span class="toc-text">先序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.1.1.2.</span> <span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.1.1.3.</span> <span class="toc-text">后序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">3.2.1.1.4.</span> <span class="toc-text">后序遍历的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC"><span class="toc-number">3.2.1.1.4.1.</span> <span class="toc-text">计算算术表达式的值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B1%82%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.2.1.1.4.2.</span> <span class="toc-text">求一棵二叉树的深度</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.1.1.5.</span> <span class="toc-text">层序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">3.2.1.1.6.</span> <span class="toc-text">层序遍历的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%BD%E5%BA%A6"><span class="toc-number">3.2.1.1.6.1.</span> <span class="toc-text">求二叉树的宽度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E7%89%88"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">非递归版</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86-2"><span class="toc-number">3.2.1.2.1.</span> <span class="toc-text">先序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-2"><span class="toc-number">3.2.1.2.2.</span> <span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-2"><span class="toc-number">3.2.1.2.3.</span> <span class="toc-text">后序遍历</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-number">3.2.1.3.</span> <span class="toc-text">二叉树线索化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%AF%B9%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-number">3.2.1.3.1.</span> <span class="toc-text">中序遍历对二叉树线索化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BB%BA%E7%AB%8B%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.2.1.3.2.</span> <span class="toc-text">通过中序遍历建立中序线索二叉树</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E5%AF%B9%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-number">3.2.1.3.3.</span> <span class="toc-text">先序遍历对二叉树线索化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E9%81%8D%E5%8E%86%E5%AF%B9%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-number">3.2.1.3.4.</span> <span class="toc-text">后续遍历对二叉树线索化</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.1.</span> <span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">4.1.2.</span> <span class="toc-text">邻接表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%E6%93%8D%E4%BD%9C"><span class="toc-number">4.1.3.</span> <span class="toc-text">图的遍历操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">4.1.3.1.</span> <span class="toc-text">深度优先遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A5%E9%82%BB%E6%8E%A5%E8%A1%A8%E4%B8%BA%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">4.1.3.1.1.</span> <span class="toc-text">以邻接表为存储结构的深度优先遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A5%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%BA%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">4.1.3.1.2.</span> <span class="toc-text">以邻接矩阵为存储结构的深度优先遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A5%E9%82%BB%E6%8E%A5%E8%A1%A8%E4%B8%BA%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">4.1.3.1.3.</span> <span class="toc-text">以邻接表为存储结构的广度优先遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#prim"><span class="toc-number">4.1.3.1.4.</span> <span class="toc-text">prim</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kruskal"><span class="toc-number">4.1.3.1.5.</span> <span class="toc-text">kruskal</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dijkstra"><span class="toc-number">4.1.3.1.6.</span> <span class="toc-text">dijkstra</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#floyd"><span class="toc-number">4.1.3.1.7.</span> <span class="toc-text">floyd</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E4%BB%BB%E6%84%8F%E4%B8%A4%E7%82%B9%E9%97%B4%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">4.1.3.1.7.1.</span> <span class="toc-text">打印任意两点间的最短路径</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#floyd%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.1.3.1.7.2.</span> <span class="toc-text">floyd 算法的实现</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%94%A8%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AD%98%E5%82%A8%E7%9A%84%E5%9B%BE%E7%9A%84%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">4.1.3.1.8.</span> <span class="toc-text">实现用邻接表存储的图的拓扑排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E7%9A%84%E6%B1%82%E6%B3%95"><span class="toc-number">4.1.3.1.9.</span> <span class="toc-text">关键路径的求法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-number">5.1.</span> <span class="toc-text">插入类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%BE%85%E6%8E%92%E5%BA%8F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%BA%8F%E5%88%97%E6%9C%89%E5%85%B3"><span class="toc-number">5.1.1.</span> <span class="toc-text">直接插入排序（时间复杂度与待排序列的初始序列有关）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%85%B3%E9%94%AE%E5%AD%97%E6%AF%94%E8%BE%83%E6%AC%A1%E6%95%B0%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%BA%8F%E5%88%97%E6%97%A0%E5%85%B3"><span class="toc-number">5.1.2.</span> <span class="toc-text">折半插入排序（关键字比较次数与初始序列无关）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%E4%BB%85%E7%94%A8%E4%BA%8E%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.3.</span> <span class="toc-text">希尔排序 (仅用于顺序存储结构)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-number">5.2.</span> <span class="toc-text">交换类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">5.2.1.</span> <span class="toc-text">起泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">5.2.2.</span> <span class="toc-text">快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-number">5.3.</span> <span class="toc-text">选择类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">5.3.1.</span> <span class="toc-text">简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-number">5.3.2.</span> <span class="toc-text">堆排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-number">5.4.</span> <span class="toc-text">归并类排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-number">5.5.</span> <span class="toc-text">基数类排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E5%BD%92%E5%B9%B6%E6%A0%91m%E5%8F%89%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-number">5.6.</span> <span class="toc-text">最佳归并树：m 叉哈夫曼树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A5%E6%96%B9%E6%A0%91"><span class="toc-number">5.7.</span> <span class="toc-text">败方树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93"><span class="toc-number">5.8.</span> <span class="toc-text">内部排序总结</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/Politics/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%B5%8B%E8%AF%95/" rel="bookmark" title="思维导图测试">思维导图测试</a></li><li class="active"><a href="/ComputerScience/DataStructure/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" rel="bookmark" title="考研数据结构算法">考研数据结构算法</a></li><li><a href="/ComputerScience/Linux/Clanguage/1_C_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="bookmark" title="1_C_基本概念">1_C_基本概念</a></li><li><a href="/ComputerScience/Linux/Clanguage/2_C_%E6%95%B0%E7%BB%84/" rel="bookmark" title="2_C_数组">2_C_数组</a></li><li><a href="/ComputerScience/Linux/Clanguage/3_C_%E5%87%BD%E6%95%B0/" rel="bookmark" title="3_C_函数">3_C_函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/4_C_%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB/" rel="bookmark" title="4_C_变量的存储类别">4_C_变量的存储类别</a></li><li><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" rel="bookmark" title="5_C_预处理">5_C_预处理</a></li><li><a href="/ComputerScience/Linux/Clanguage/6_C_%E6%8C%87%E9%92%88/" rel="bookmark" title="6_C_指针">6_C_指针</a></li><li><a href="/ComputerScience/Linux/Clanguage/7_C_%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%94%B3%E8%AF%B7/" rel="bookmark" title="7_C_动态内存申请">7_C_动态内存申请</a></li><li><a href="/ComputerScience/Linux/Clanguage/8_C_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" rel="bookmark" title="8_C_字符串处理函数">8_C_字符串处理函数</a></li><li><a href="/ComputerScience/Linux/Clanguage/9_C_%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E6%9E%9A%E4%B8%BE/" rel="bookmark" title="9_C_结构体、共用体、枚举">9_C_结构体、共用体、枚举</a></li><li><a href="/ComputerScience/Linux/Clanguage/10_C_%E9%93%BE%E8%A1%A8/" rel="bookmark" title="10_C_链表">10_C_链表</a></li><li><a href="/ComputerScience/Linux/Cplusplus/01_C++_%E6%A6%82%E8%BF%B0/" rel="bookmark" title="01_C++_概述">01_C++_概述</a></li><li><a href="/ComputerScience/Linux/Cplusplus/02_C++_%E5%88%9D%E5%A7%8B/" rel="bookmark" title="02_C++_初始">02_C++_初始</a></li><li><a href="/ComputerScience/Linux/Cplusplus/03_C++_%E5%AF%B9C%E7%9A%84%E6%89%A9%E5%B1%95/" rel="bookmark" title="03_C++_对C的扩展">03_C++_对C的扩展</a></li><li><a href="/ComputerScience/Linux/Cplusplus/04_C++_%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="04_C++_类和对象">04_C++_类和对象</a></li><li><a href="/ComputerScience/Linux/Cplusplus/05_C++_%E6%A8%A1%E6%9D%BF/" rel="bookmark" title="05_C++_模板">05_C++_模板</a></li><li><a href="/ComputerScience/Linux/Cplusplus/06_C++_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="bookmark" title="06_C++_类型转换">06_C++_类型转换</a></li><li><a href="/ComputerScience/Linux/Cplusplus/07_C++_%E5%BC%82%E5%B8%B8/" rel="bookmark" title="07_C++_异常">07_C++_异常</a></li><li><a href="/ComputerScience/Linux/Cplusplus/08_C++_STL/" rel="bookmark" title="08_C++_STL">08_C++_STL</a></li><li><a href="/ComputerScience/%E6%80%BB%E6%A6%82/" rel="bookmark" title="我的数学相关知识总概">我的数学相关知识总概</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="方聪" data-src="/images/avatar.jpg"><p class="name" itemprop="name">方聪</p><div class="description" itemprop="description">记录生活 铭记感动 立足当下 创造未来</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">89</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">22</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZjY29jb3M=" title="https:&#x2F;&#x2F;github.com&#x2F;fccocos"><i class="ic i-github"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9zaS1qaS1saS00" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;si-ji-li-4"><i class="ic i-zhihu"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE4NjA4NzIwNzE=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1860872071"><i class="ic i-cloud-music"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20vdS81NDQ2Mjk0NDgw" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5446294480"><i class="ic i-weibo"></i></span> <span class="exturl item email" data-url="bWFpbHRvOmd1bmZpcmVmYzcwQDE2My5jb20=" title="mailto:gunfirefc70@163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/Politics/MarxistPrinciple/%E5%88%86%E6%9E%90%E9%A2%98%E5%86%B2%E5%88%BA%E8%83%8C%E8%AF%B5/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/English/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E6%A8%A1%E6%9D%BF%E8%83%8C%E8%AF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E6%8F%92%E4%BB%B6/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/5_C_%E9%A2%84%E5%A4%84%E7%90%86/" title="5_C_预处理">5_C_预处理</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E4%BB%A3%E7%A0%81%E7%BB%83%E4%B9%A0/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/04_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E5%86%85%E6%A0%B8IO/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/C51%E5%8D%95%E7%89%87%E6%9C%BA/05_51%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E4%B8%AD%E6%96%AD/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim_quick/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/2_C_%E6%95%B0%E7%BB%84/" title="2_C_数组">2_C_数组</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ComputerScience/" title="分类于 计算机科学">计算机科学</a></div><span><a href="/ComputerScience/Linux/Clanguage/3_C_%E5%87%BD%E6%95%B0/" title="3_C_函数">3_C_函数</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vscode%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" title="未命名">未命名</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2023</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">方聪 @ Gunfire</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">452k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">6:51</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"ComputerScience/DataStructure/考研数据结构算法/",favicon:{show:"（●´3｀●）非常非常好!!!",hide:"(´Д｀)炸裂了啊!!!"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:{placeholder:"1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"},fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({log:!1,pluginJsPath:"lib/",pluginModelPath:"assets/",pluginRootPath:"live2dw/",tagMode:!1})</script></body></html>
