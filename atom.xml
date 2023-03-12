@@ -4162,46 +4162,6 @@ private:
         <updated>2023-03-11T09:49:19.949Z</updated>
     </entry>
     <entry>
-        <id>http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E9%AB%98%E9%98%B6%E7%94%A8%E6%B3%95/</id>
-        <title></title>
-        <link rel="alternate" href="http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E9%AB%98%E9%98%B6%E7%94%A8%E6%B3%95/"/>
-        <content type="html">&lt;p&gt;noremap 为不递归地映射按键 (hjkl iIu)&lt;/p&gt;
-&lt;p&gt;map&lt;/p&gt;
-&lt;p&gt;&amp;lt;nop&amp;gt; !p&lt;/p&gt;
-&lt;p&gt;:w&amp;lt;CR&amp;gt; :w center 键&lt;/p&gt;
-&lt;p&gt;:q&amp;lt;CR&amp;gt; :q center 键&lt;/p&gt;
-&lt;p&gt;set number 设置行号&lt;/p&gt;
-&lt;p&gt;set norelativenumber 关闭相关行号&lt;/p&gt;
-&lt;p&gt;set cursorline  显示当前位置&lt;/p&gt;
-&lt;p&gt;set wrap&lt;/p&gt;
-&lt;p&gt;set showcmd&lt;/p&gt;
-&lt;p&gt;set wildmenu&lt;/p&gt;
-&lt;p&gt;c 修改&lt;/p&gt;
-&lt;p&gt;c +nu+left/right&lt;/p&gt;
-&lt;p&gt;c+i+&amp;quot;/{&lt;/p&gt;
-&lt;p&gt;f + 要查找的字符  找到当前行要查找的字符&lt;/p&gt;
-&lt;p&gt;set hlsearch 搜索高亮&lt;/p&gt;
-&lt;p&gt;set incsearch 写入高亮&lt;/p&gt;
-&lt;p&gt;set smartcase 只能大小写&lt;/p&gt;
-&lt;p&gt;v 可视普通模式&lt;/p&gt;
-&lt;p&gt;V 可视行模式&lt;/p&gt;
-&lt;p&gt;&amp;lt;C-v&amp;gt; 可视块模式&lt;/p&gt;
-&lt;p&gt;&amp;lt;C-v&amp;gt;+G + I + 要添加的字符    表示在光标所在列之前插入你要添加的字符&lt;/p&gt;
-&lt;p&gt;:set splitright&lt;/p&gt;
-&lt;p&gt;:set nosplitright&lt;/p&gt;
-&lt;p&gt;:set nosplitbelow&lt;/p&gt;
-&lt;p&gt;:set splitbelow&lt;/p&gt;
-&lt;p&gt;:res+number 增加当前窗口的宽度&lt;/p&gt;
-&lt;p&gt;:res-number 减少当前窗口的宽度&lt;/p&gt;
-&lt;p&gt;:vertical resize +number 增加当前窗口的高度&lt;/p&gt;
-&lt;p&gt;:vertical resize-number 减少当前窗口的高度&lt;/p&gt;
-&lt;p&gt;:tabe 打开新的标签页&lt;/p&gt;
-&lt;p&gt;:-tabnext 到左边的标签页&lt;/p&gt;
-&lt;p&gt;:+tabnext 到右边的标签页&lt;/p&gt;
-&lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js&#34;&gt;&lt;/script&gt;&lt;script defer=&#34;true&#34; type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js&#34;&gt;&lt;/script&gt;&lt;link rel=&#34;stylesheet&#34; type=&#34;text&amp;#x2F;css&#34; href=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css&#34;&gt;</content>
-        <updated>2023-03-11T09:49:19.948Z</updated>
-    </entry>
-    <entry>
         <id>http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E7%9A%84buffer%E3%80%81window%E3%80%81tab%E3%80%81mark%E5%92%8Cregister/</id>
         <title></title>
         <link rel="alternate" href="http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E7%9A%84buffer%E3%80%81window%E3%80%81tab%E3%80%81mark%E5%92%8Cregister/"/>
@@ -4279,6 +4239,46 @@ private:
 &lt;p&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;  双引号表示无名寄存器&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js&#34;&gt;&lt;/script&gt;&lt;script defer=&#34;true&#34; type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js&#34;&gt;&lt;/script&gt;&lt;link rel=&#34;stylesheet&#34; type=&#34;text&amp;#x2F;css&#34; href=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css&#34;&gt;</content>
+        <updated>2023-03-11T09:49:19.948Z</updated>
+    </entry>
+    <entry>
+        <id>http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E9%AB%98%E9%98%B6%E7%94%A8%E6%B3%95/</id>
+        <title></title>
+        <link rel="alternate" href="http://yoursite.com/ComputerScience/Linux/%E6%9D%82%E9%A1%B9/vim%E9%AB%98%E9%98%B6%E7%94%A8%E6%B3%95/"/>
+        <content type="html">&lt;p&gt;noremap 为不递归地映射按键 (hjkl iIu)&lt;/p&gt;
+&lt;p&gt;map&lt;/p&gt;
+&lt;p&gt;&amp;lt;nop&amp;gt; !p&lt;/p&gt;
+&lt;p&gt;:w&amp;lt;CR&amp;gt; :w center 键&lt;/p&gt;
+&lt;p&gt;:q&amp;lt;CR&amp;gt; :q center 键&lt;/p&gt;
+&lt;p&gt;set number 设置行号&lt;/p&gt;
+&lt;p&gt;set norelativenumber 关闭相关行号&lt;/p&gt;
+&lt;p&gt;set cursorline  显示当前位置&lt;/p&gt;
+&lt;p&gt;set wrap&lt;/p&gt;
+&lt;p&gt;set showcmd&lt;/p&gt;
+&lt;p&gt;set wildmenu&lt;/p&gt;
+&lt;p&gt;c 修改&lt;/p&gt;
+&lt;p&gt;c +nu+left/right&lt;/p&gt;
+&lt;p&gt;c+i+&amp;quot;/{&lt;/p&gt;
+&lt;p&gt;f + 要查找的字符  找到当前行要查找的字符&lt;/p&gt;
+&lt;p&gt;set hlsearch 搜索高亮&lt;/p&gt;
+&lt;p&gt;set incsearch 写入高亮&lt;/p&gt;
+&lt;p&gt;set smartcase 只能大小写&lt;/p&gt;
+&lt;p&gt;v 可视普通模式&lt;/p&gt;
+&lt;p&gt;V 可视行模式&lt;/p&gt;
+&lt;p&gt;&amp;lt;C-v&amp;gt; 可视块模式&lt;/p&gt;
+&lt;p&gt;&amp;lt;C-v&amp;gt;+G + I + 要添加的字符    表示在光标所在列之前插入你要添加的字符&lt;/p&gt;
+&lt;p&gt;:set splitright&lt;/p&gt;
+&lt;p&gt;:set nosplitright&lt;/p&gt;
+&lt;p&gt;:set nosplitbelow&lt;/p&gt;
+&lt;p&gt;:set splitbelow&lt;/p&gt;
+&lt;p&gt;:res+number 增加当前窗口的宽度&lt;/p&gt;
+&lt;p&gt;:res-number 减少当前窗口的宽度&lt;/p&gt;
+&lt;p&gt;:vertical resize +number 增加当前窗口的高度&lt;/p&gt;
+&lt;p&gt;:vertical resize-number 减少当前窗口的高度&lt;/p&gt;
+&lt;p&gt;:tabe 打开新的标签页&lt;/p&gt;
+&lt;p&gt;:-tabnext 到左边的标签页&lt;/p&gt;
+&lt;p&gt;:+tabnext 到右边的标签页&lt;/p&gt;
 &lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js&#34;&gt;&lt;/script&gt;&lt;script defer=&#34;true&#34; type=&#34;text&amp;#x2F;javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js&#34;&gt;&lt;/script&gt;&lt;link rel=&#34;stylesheet&#34; type=&#34;text&amp;#x2F;css&#34; href=&#34;https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css&#34;&gt;</content>
         <updated>2023-03-11T09:49:19.948Z</updated>
     </entry>
